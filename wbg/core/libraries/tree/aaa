@@ -1,15 +1,15 @@
 Array
 (
     [action] => update
-    [js_to_load] => 
-    [cat] => 16
-    [title] => Page blocks
-    [dir] => 
+    [js_to_load] => update
+    [cat] => 32
+    [title] => Eyelash extensions
+    [dir] => eyelash_extensions
     [active] => 1
     [enabled] => 1
-    [output_template] => 0
-    [input_module] => 0
-    [output_module] => 0
+    [output_template] => 5
+    [input_module] => 3
+    [output_module] => 34
     [property_template] => null
     [rpc] => 
 )

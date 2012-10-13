@@ -104,5 +104,4 @@ class UrlManager
 		return $string;
 	}
 }
-
 ?>

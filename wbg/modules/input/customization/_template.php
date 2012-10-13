@@ -3,8 +3,8 @@ global $_CFG;
 
 $this->textline('Skin options');
 $skins = array( 'default' => 'Default',
-				'bright'  => 'Bright',
-				'dark'    => 'Dark',
+				'hanna'  => 'Hanna',
+				//'dark'    => 'Dark',
 				'konsus'  => 'Konsus'
 			  );
 $this->select("skin","Website skin:", $skins , null, "style='width:150px'");

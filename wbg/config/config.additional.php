@@ -19,8 +19,9 @@ $_CFG['path_to_converter'] = "/usr/bin/convert";
 $_CFG['path_to_composite'] = "/usr/bin/composite";
 
 //Portfolio
-$_CFG['portfolio_folder_id']   = 24;
-$_CFG['portfolio_output_module_id']   = 15;
+$_CFG['portfolio_folder_id'] = 24;
+$_CFG['portfolio_output_module_id'] = 15;
+$_CFG['portfolio_input_module_id'] = 5;
 $_CFG['path_to_public_images'] = $_CFG['path_to_cms'].'../images/portfolio';
 $_CFG['public_images_folder']  = 'portfolio';
 

@@ -55,9 +55,9 @@
 // <<< DB
 
 	$_CFG['sql']['host'] 		= "localhost";
-	$_CFG['sql']['login'] 		= "andreybu_andrey";
-	$_CFG['sql']['password'] 	= "TmS@86![ilSV";
-	$_CFG['sql']['database'] 	= "andreybu_common_galleries";
+	$_CFG['sql']['login'] 		= "andreybu_hanna";
+	$_CFG['sql']['password'] 	= "9xDmJa;u42Wo";
+	$_CFG['sql']['database'] 	= "andreybu_hanna";
 
 	$sql_link = mysql_connect($_CFG['sql']['host'],$_CFG['sql']['login'],$_CFG['sql']['password']) or WBG_GLOBAL::wbg_die("Can't connect to database [".$_CFG['sql']['database']."] on [".$_CFG['sql']['host']."] with username [".$_CFG['sql']['login']."]");
 	mysql_select_db ($_CFG['sql']['database'],$sql_link) or die ("Cant change database");
