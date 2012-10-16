@@ -1,0 +1,19 @@
+{
+  "name": "hanna",
+  "version": "0.0.1",
+  "description": "Hanna's website",
+  "main": "grunt.js",
+  "dependencies": {
+    "grunt-beautify": "~0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://andrey-buligin@github.com/andrey-buligin/hanna.git"
+  },
+  "author": "Andrey Buligin",
+  "license": "BSD"
+}
