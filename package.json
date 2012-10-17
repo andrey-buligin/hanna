@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Hanna's website",
   "main": "grunt.js",
-  "homepage": "www.beautybyhanna.co.uk",
+  "homepage": "http://www.beautybyhanna.co.uk",
   "dependencies": {
     "grunt-beautify": "~0.1.0"
   },
