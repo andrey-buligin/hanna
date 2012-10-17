@@ -18,6 +18,10 @@ module.exports = function(grunt) {
       dist: {
         src: ['<banner:meta.banner>', 'js/skins/hanna/*.js', 'js/skins/hanna/*/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
+      },
+      css: {
+        src: ['<banner:meta.banner>', 'css/main.css', 'css/normalize.css', 'css/skins/hanna/slider.css', 'css/skins/hanna/main.css'],
+        dest: 'dist/<%= pkg.name %>.css'
       }
     },
     min: {
