@@ -57,10 +57,10 @@ class WbgLayout
             echo '<link rel="stylesheet" type="text/css" href="'.$this->getSkinCssUrl( $file ).'" />';
     }
     
-    public function loadHeaderJsFile( $file = null )
+    public function loadHeaderJsFile( $file = null, $path = '')
     {
         if ( $file )
-            echo '<script type="text/javascript" src="'.$this->getSkinJsUrl( $file ).'"></script>';
+            echo '<script type="text/javascript" src="'.($path ? $path.'/'.$file : $this->getSkinJsUrl( $file )).'"></script>';
     }
     
     public function loadGalleryRequiredCssFiles()
@@ -92,7 +92,7 @@ class WbgLayout
     	            if ( $type == 'css' )
     	                $this->loadHeaderCssFile( $file );
     	            else
-    	                $this->loadHeaderJsFile( $file );
+    	                $this->loadHeaderJsFile( $file, 'js/galleries/' );
     	        }
 	        }
 	    }
