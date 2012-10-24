@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 class WbgLayout
 {
     const tplExtension = '.tpl.php';
-    
+
     private static $instance;
     private $layout       = '';
     public  $skin         = '';
@@ -13,11 +13,11 @@ class WbgLayout
     private function __construct()
     {
     }
-    
+
     public function __clone()
     {
     }
-    
+
     public static function initialize()
     {
         if ( !isset(self::$instance) )
@@ -32,17 +32,17 @@ class WbgLayout
     {
         return $this->layout = $pathToLayout;
     }
-    
+
     public function getLayout( $pathToLayout = null )
     {
         return $this->layout;
     }
-    
+
     public function renderLayout()
     {
         global $web;
         global $_CFG;
-        
+
         $this->skin = $_CFG['skinManager'];
         $this->currentPage = new WBG_Page( $web->active_category );
         if ( $this->layout AND file_exists( $this->layout ) ) {
@@ -50,37 +50,37 @@ class WbgLayout
             include_once( $this->layout );
         }
     }
-    
+
     public function loadHeaderCssFile( $file = null )
     {
         if ( $file )
             echo '<link rel="stylesheet" type="text/css" href="'.$this->getSkinCssUrl( $file ).'" />';
     }
-    
+
     public function loadHeaderJsFile( $file = null, $path = '')
     {
         if ( $file )
             echo '<script type="text/javascript" src="'.($path ? $path.'/'.$file : $this->getSkinJsUrl( $file )).'"></script>';
     }
-    
+
     public function loadGalleryRequiredCssFiles()
     {
         global $_CFG;
         global $web;
-        
+
         if ( @$web->category_data[$web->active_category]['output_module'] == $_CFG['portfolio_output_module_id'] )
             $this->loadGalleryRequiredFiles( 'css' );
     }
-    
+
     public function loadGalleryRequiredJsFiles()
     {
         global $_CFG;
         global $web;
-        
+
         if ( @$web->category_data[$web->active_category]['output_module'] == $_CFG['portfolio_output_module_id'] )
             $this->loadGalleryRequiredFiles( 'js' );
     }
-    
+
     protected function loadGalleryRequiredFiles( $type = 'css' )
     {
         if ( $requiredFiles = $this->getGalleryRequiredFilesList($type) )
@@ -97,7 +97,7 @@ class WbgLayout
 	        }
 	    }
     }
-    
+
     public function getGalleryRequiredFilesList( $type = 'css' )
     {
         global $_CFG;
@@ -105,7 +105,7 @@ class WbgLayout
 
         $portfolioManager = new PortfolioManager();
         $currentGallery = $portfolioManager->getCurrentPorfolioGallery();
-        
+
         if ( $type == 'css' )
         {
             if ( isset($portfolioManager->config[$currentGallery]['CssList']) )
@@ -118,25 +118,25 @@ class WbgLayout
         }
         return false;
     }
-    
+
     public function getImageUrl( $image = null)
     {
         if ( $image AND $this->skin instanceof SkinManager )
             return 'images/skins/'.$this->skin->getSkinName().'/'.$image;
     }
-    
+
     public function getSkinCssUrl( $cssFile = null )
     {
         if ( $cssFile AND $this->skin instanceof SkinManager )
             return 'css/skins/'.$this->skin->getSkinName().'/'.$cssFile;
     }
-    
+
     public function getSkinJsUrl( $jsFile = null)
     {
         if ( $jsFile AND $this->skin instanceof SkinManager )
             return 'js/skins/'.$this->skin->getSkinName().'/'.$jsFile;
     }
-    
+
     public function getLogoImage()
     {
         if ( $this->skin->logo )
@@ -144,7 +144,7 @@ class WbgLayout
         else
             return '<img src="'.$this->getImageUrl( 'building/logo.jpg' ).'" alt="" title="" /></a>';
     }
-    
+
     public function getBackgroundStyle()
     {
         $backgroundImage = @unserialize($this->skin->background_image);
@@ -156,34 +156,34 @@ class WbgLayout
                 $position   = $this->skin->background_position;
                 $background = "url('images/".$backgroundImage['src']."') ".$position;
             }
-            
+
             if ( trim($this->skin->background) )
                 $background .= " ".$this->skin->background;
-                
+
             return ' style="background: '.$background.'"';
         }
     }
-    
+
     public function displayHead()
     {
         $this->includeTemplate( 'parts/head' );
     }
-    
+
     public function displayHeader()
     {
         $this->includeTemplate( 'parts/header' );
     }
-    
+
     public function displayFooter()
     {
         $this->includeTemplate( 'parts/footer' );
     }
-    
+
     public function displayBlock( $blockId = null )
     {
         global $_CFG;
         $block = null;
-        
+
         if ( is_numeric( $blockId ) )
         {
             //loadBlockById
@@ -191,11 +191,11 @@ class WbgLayout
         } else {
             //loadBlockByName
         }
-        
+
         if ( $block )
             $this->includeTemplate( 'blocks/'.$block['title'] );
     }
-      
+
     public function blockExists( $blockId = null )
     {
        global $_CFG;
@@ -203,18 +203,18 @@ class WbgLayout
            $this->skinBlocks = $_CFG['blockManager']->getSkinBlocks();
        return array_key_exists( $blockId, $this->skinBlocks );
     }
-    
+
     public function displayModule()
     {
         $this->includeTemplate( 'parts/footer' );
     }
-    
-    
+
+
     public function includeCssCode( $css = null )
     {
         echo '<style>'.$css.'</style>';
     }
-    
+
     public function includeJsCode( $jsCode = null )
     {
         echo '<script type="text/javascript">
@@ -223,7 +223,7 @@ class WbgLayout
             	//--><!]]>
               </script>';
     }
-    
+
     public function includeTemplate( $template = null, &$templateVars = null )
     {
         global $_CFG;
