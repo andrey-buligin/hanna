@@ -1,32 +1,34 @@
 <?php
-    $textlist = $templateVars['textlist'];
-    $article  = $templateVars['article'];
-    $key      = $templateVars['article_key'];
-    $openedDoc= false;
-    
-    $content  = unserialize( $article['content'] );
+	$textlist   = $templateVars['textlist'];
+	$urlManager = $templateVars['urlManager'];
+	$article    = $templateVars['article'];
+	$key        = $templateVars['article_key'];
+	$openedDoc  = false;
+
+	$content                = unserialize( $article['content'] );
 	$content['category_id'] = $article['category_id'];
-	$content['id'] = $article['id'];
-	$link 	  = URL_MANAGER_HELPER::makeUrl( null, $content, true );//WBG_HELPER::SmartUrlEncode(WBG::crosslink($article['category_id']).'?doc='.$article['id']);
-	
+	$article['title']       = $content['title'];
+	$content['id']          = $article['id'];
+	$link                   = $urlManager->getBlogPostUrl($article);
+
 	if ( !$openedDoc )
 		$class = '';
 	else
 		$class = ' last';
-	
+
 	if (isset($content['lead_img']['src']))
 		$img = '<a href="'.$link.'">'.WBG_HELPER::insertImage( $content['lead_img'],' class="f-left"', null, 1).'</a>';
 	else
 	    $img = '';
-	
+
 	if ($content['date'] AND $content['time'])
 		$date = date("d.m.Y", $content['date']).' '.$content['time'];
 	else
 	    $date = date("d.m.Y H:i", $article['created']);
-	
+
 	$author = $textlist->_getOwner( $article['owner'] );
 ?>
-<div class="blog-item<?php echo $class?>">
+<div class="blog-item clear<?php echo $class?>">
 	<h2><a href="<?php echo $link ?>"><?php echo $content['title'] ?></a></h2>
 	<p class="date">
 		<span class="author"><?php echo $author['I_name'].' '.$author['I_surname'] ?></span> | <?php echo $date; ?>

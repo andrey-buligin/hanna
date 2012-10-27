@@ -110,6 +110,21 @@ a:hover {
 .f-left {
   float: left;
 }
+.clear {
+  width: 100%;
+  clear: both !important;
+  display: inline-block;
+}
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+* html .clear {
+  height: 1%;
+}
 /* COMMON */
 /************************************************************************************/
 /* Content */
@@ -515,6 +530,39 @@ nav > ul ul.level-3 {
   font-family: 'Rochester', Georgia, serif;
   font-size: 2.2em;
 }
+/* Gallery overrides */
+/************************************************************************************/
+/* Blog */
+#blog-page .blog-item {
+  margin-bottom: 5px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #b3b3b3;
+}
+#blog-page .blog-item h2 {
+  font-family: Arial;
+  margin: 0.25em 0;
+}
+#blog-page .blog-item h2 a {
+  color: #d0ab47;
+}
+#blog-page .blog-item p.date {
+  margin: 0 0 10px 0;
+  color: #5E5D5D;
+  font-weight: bold;
+}
+#blog-page .blog-item img.f-left {
+  margin: 0 10px 5px 0;
+}
+#blog-page .blog-item .tags {
+  color: #8B6A12;
+}
+#blog-page .blog-item .tags a {
+  color: #8B6A12;
+}
+#blog-page .blog-item .tags strong {
+  color: #5E5D5D;
+}
+/* Blog */
 /************************************************************************************/
 #poweredBy {
   position: absolute;
