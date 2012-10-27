@@ -142,10 +142,18 @@ a:hover {
   height: 222px;
 }
 #content {
-  font-size: 1.2em;
+  font-size: 1.3em;
   padding: 20px 0;
   border-top: 5px solid #d0ab47;
   min-height: 100px;
+  color: #5E5D5D;
+}
+#content h1 {
+  font-family: 'Rochester', Georgia, serif;
+  margin: 0 0 0.5em 0;
+  font-size: 2.2em;
+  color: #000;
+  font-weight: normal;
 }
 #footerContainer {
   width: 990px;
@@ -154,38 +162,39 @@ a:hover {
   font-size: 1.2em;
   position: relative;
 }
-#footerContainer.static {
-  position: static;
-  width: 990px;
-  padding: 22px 80px 20px 0px;
-  font-size: 12px;
-  color: #3f3f3f;
-  clear: both;
-}
-#copyright {
+#footerContainer #copyright {
   float: right;
   width: 40%;
   text-align: right;
   white-space: nowrap;
 }
-#contacts {
+#footerContainer #copyright #poweredBy {
+  position: absolute;
+  padding-top: 15px;
+  right: 0;
+}
+#footerContainer #copyright #poweredBy img {
+  vertical-align: middle;
+  margin: 0 3px;
+}
+#footerContainer #contacts {
   float: left;
   padding: 0 0 15px 0;
   width: 60%;
   font-style: normal;
   text-transfer: uppercase;
 }
-#contacts span {
+#footerContainer #contacts span {
   color: #8B6A12;
 }
-#contacts span.followUs {
+#footerContainer #contacts span.followUs {
   float: right;
   font-weight: bold;
   color: #3F3F3F;
   margin-top: -15px;
 }
-.fb-icon,
-.googlePlus-icon {
+#footerContainer #contacts .fb-icon,
+#footerContainer #contacts .googlePlus-icon {
   background: url("images/skins/hanna/building//icons/facebook.png") top left no-repeat;
   display: inline-block;
   width: 30px;
@@ -194,17 +203,11 @@ a:hover {
   vertical-align: middle;
   margin-right: 5px;
 }
-.googlePlus-icon {
+#footerContainer #contacts .googlePlus-icon {
   background: url("images/skins/hanna/building//icons/google-plus.png") top left no-repeat;
 }
-h1 {
-  font-family: 'Rochester', Georgia, serif;
-  margin: 0 0 0.5em 0;
-  font-size: 2.2em;
-  color: #000;
-  font-weight: normal;
-}
-/* innerFade */
+/* Content */
+/************************************************************************************/
 #innerFadeContainer {
   position: relative;
   height: 440px;
@@ -235,7 +238,7 @@ ul {
   position: relative;
   z-index: 2;
 }
-/* Content */
+/* /* innerFade */
 /************************************************************************************/
 /* Navigation */
 .menu {
@@ -479,30 +482,30 @@ nav > ul ul.level-3 {
   -moz-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
 }
-#error {
+#customForm #error {
   margin: 15px 0;
   border: 1px solid #efefef;
 }
-#error ul {
+#customForm #error ul {
   list-style: square;
   padding: 5px;
   font-size: 11px;
 }
-#error ul li {
+#customForm #error ul li {
   list-style-position: inside;
   line-height: 1.6em;
 }
-#error ul li strong {
+#customForm #error ul li strong {
   color: #D0AB47;
 }
-#error.valid {
+#customForm #error.valid {
   border: none;
 }
-#error.valid ul {
+#customForm #error.valid ul {
   list-style: none;
   font-size: 12px;
 }
-#error.valid strong {
+#customForm #error.valid strong {
   color: #8B6A12;
 }
 #formOpener {
@@ -539,16 +542,15 @@ nav > ul ul.level-3 {
   border-bottom: 1px solid #b3b3b3;
 }
 #blog-page .blog-item h2 {
-  font-family: Arial;
   margin: 0.25em 0;
-}
-#blog-page .blog-item h2 a {
-  color: #d0ab47;
 }
 #blog-page .blog-item p.date {
   margin: 0 0 10px 0;
   color: #5E5D5D;
   font-weight: bold;
+}
+#blog-page .blog-item p.date .author {
+  font-family: Arial;
 }
 #blog-page .blog-item img.f-left {
   margin: 0 10px 5px 0;
@@ -564,12 +566,3 @@ nav > ul ul.level-3 {
 }
 /* Blog */
 /************************************************************************************/
-#poweredBy {
-  position: absolute;
-  padding-top: 15px;
-  right: 0;
-}
-#poweredBy img {
-  vertical-align: middle;
-  margin: 0 3px;
-}
