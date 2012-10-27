@@ -34,7 +34,7 @@
 			</div>');
 	}
 ?>
-                    
+
 <?if( isset($_POST['send']) && (!validateName($_POST['name']) || !validateEmail($_POST['email']) || !validateMessage($_POST['message']) ) ):?>
 		<div id="error">
 			<ul>
@@ -50,7 +50,11 @@
 			</ul>
 		</div>
 	<?elseif(isset($_POST['send'])):?>
-		<?php mail('surfer@inbox.lv', 'Contact form', print_r($_POST, 1));?>
+		<?php
+			$header = "From: www.beautybyhanna.com <omgbeautybyhanna@gmail.com>\r\n";
+			mail(WBG::message('mailto', null, 1), 'Contact form', print_r($_POST, 1), $header );
+			//mail('surfer@inbox.lv', 'Contact form', print_r($_POST, 1), $header );
+		?>
 		<div id="error" class="valid">
 			<strong>Thanks for submiting the form!</strong> I will get back to you soon.</li>
 		</div>
