@@ -9,7 +9,7 @@
 
 //======================================================================================
 // [[[ Main includes
-	
+
 	if (!@include_once(dirname(__FILE__)."/wbg/config/config.php")){
 		// Making install
 		require_once(dirname(__FILE__).'/wbg/core/libraries/install_system/install.php');
@@ -27,17 +27,17 @@
 	{
 	    $category = $websiteIsUnderConstruction;
 	    //create holdingpage layout
-	} 
+	}
 	else
 	{
-    	//obrabotka URL dlja 
-    	$catalogTitle = 'portfolio'; 
+    	//obrabotka URL dlja
+    	$catalogTitle = 'portfolio';
     	if ( preg_match('/[site\/]+[lat|eng|rus]+\/'.$catalogTitle.'\/(.+?)/', @$_SERVER['REDIRECT_URL']) OR
     	     preg_match('/[site\/]+[lat|eng|rus]+\/(.+?)-B[0-9]+\.html/', @$_SERVER['REDIRECT_URL']))
     	{
     	    $catsUrl = preg_replace('/[site\/]+[lat|eng|rus]+\/'.$catalogTitle.'/', '', $_SERVER['REDIRECT_URL']);
     		$cats = explode("/", $catsUrl);
-    		
+
         	if ( !preg_match('/[site\/]+[lat|eng|rus]+\/(.+?)-B[0-9]+\.html/', @$_SERVER['REDIRECT_URL']) )
     		{
     			if (preg_match("/-P([0-9]+).html/", $catsUrl, $objId)) {
@@ -49,8 +49,10 @@
     			foreach ($cats as $key => $cat) {
     				if ($cat) {
     					$cat = preg_match("/-C([0-9]+)/", $cat, $catId);
-    					$web->objCats[] = $catId[1];
-    					$lastCat = $catId[1];
+                        if ( $catId ) {
+                            $web->objCats[] = $catId[1];
+                            $lastCat        = $catId[1];
+                        }
     				}
     			}
     		} else {
@@ -63,23 +65,23 @@
     				}
     			}
     		}
-		
+
     		if (!session_start()) session_start();
     		$_GET['portfolio_cats'] = $cats;
     		$_GET['wbg_cat'] = $lastCat;
     		if ( isset($_SESSION[$_CFG['path_url_full']]['last_category_lang']) )
     		    $_GET['lang'] = $_SESSION[$_CFG['path_url_full']]['last_category_lang'];
     	}
-    	
+
     	if ( !isset($_GET['wbg_cat']) )
     	{
     		$REQUEST_URI  = preg_replace("!^".$_CFG['path_url']."(.*)!si","$1", @$_SERVER['REDIRECT_URL']);
     		$REQUEST_URI  = preg_replace("![^/]+\\.(php|html|htm|php5)!si" , "" , $REQUEST_URI);
-    
+
     		if (substr($REQUEST_URI,-1,1) != "/"){
     			$REQUEST_URI .= "/";
     		}
-    
+
     		if ($REQUEST_URI == $_CFG['path_url'] OR $REQUEST_URI == '/'){ // Eto znachit uzer zashel na startovuju stranicu saita
     			$category = mysql_fetch_assoc(mysql_query("SELECT * FROM wbg_tree_categories WHERE id='".$_CFG['START_CAT']."'"));
     		} else {
