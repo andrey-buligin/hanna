@@ -97,7 +97,7 @@ class comments {
 
 		if ( self::$error_on_comment ) {
 			$show = true;
-			$msg  .= '<div class="alertBox">'.WBG::message("comments_please_check_fields", null,1).'</div>';
+			$msg  .= '<div class="error">'.WBG::message("comments_please_check_fields", null,1).'</div>';
 		} elseif ( self::$saved == 1 ) {
 			$msg  .= '<div class="alertBox">'.WBG::message("comments_succesufuly_added", null,1).'</div>';
 		}

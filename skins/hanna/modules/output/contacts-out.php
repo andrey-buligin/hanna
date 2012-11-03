@@ -64,12 +64,12 @@
 	<div>
 		<label for="name">Name</label>
 		<input id="name" name="name" type="text" />
-		<span id="nameInfo">Your name</span>
+		<span id="nameInfo"></span>
 	</div>
 	<div>
 		<label for="email">E-mail</label>
 		<input id="email" name="email" type="text" />
-		<span id="emailInfo">Valid E-mail address</span>
+		<span id="emailInfo"></span>
 	</div>
 	<div>
 		<label for="message">Message</label>

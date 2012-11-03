@@ -2,7 +2,7 @@
 //@Author: Adrian "yEnS" Mato Gondelle & Ivan Guardado Castro
 //@website: www.yensdesign.com
 //@email: yensamg@gmail.com
-//@license: Feel free to use it, but keep this credits please!					
+//@license: Feel free to use it, but keep this credits please!
 /***************************/
 
 $(document).ready(function(){
@@ -13,7 +13,7 @@ $(document).ready(function(){
 	var email = $("#email");
 	var emailInfo = $("#emailInfo");
 	var message = $("#message");
-	
+
 	//On blur
 	name.blur(validateName);
 	email.blur(validateEmail);
@@ -27,7 +27,7 @@ $(document).ready(function(){
 		else
 			return false;
 	});
-	
+
 	//validation functions
 	function validateEmail(){
 		//testing regular expression
@@ -59,7 +59,7 @@ $(document).ready(function(){
 		//if it's valid
 		else{
 			name.removeClass("error");
-			nameInfo.text("What's your name?");
+			nameInfo.text("");
 			nameInfo.removeClass("error");
 			return true;
 		}
@@ -71,7 +71,7 @@ $(document).ready(function(){
 			return false;
 		}
 		//it's valid
-		else{			
+		else{
 			message.removeClass("error");
 			return true;
 		}
