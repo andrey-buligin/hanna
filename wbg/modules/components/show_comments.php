@@ -20,7 +20,7 @@ class comments {
 		//--------------------------------------------------------------------------------------
 		// [[[ Captcha include
 
-			include_once(dirname(__FILE__).'/../libraries/securimage/securimage.php');
+			include_once(dirname(__FILE__).'/../components/recaptcha.php');
 
 		// ]]] Captcha include
 		//--------------------------------------------------------------------------------------
@@ -32,14 +32,14 @@ class comments {
 			self::$inited 			= true;
 		//}
 
-		if (isset($_POST['comment_comment'])){
+		if (isset($_POST['comment'])){
 			self::check_comment_data();
 			if (self::$error_on_comment){ // $sli oshibka bila
 				foreach ($_POST as $key=>$value) {
 					$_POST[$key] = $value;
 				}
 			} else {
-				self::insert_comment($_POST['name'], $_POST['email'], $_POST['comment_comment']);
+				self::insert_comment($_POST['name'], $_POST['email'], $_POST['comment']);
 				$_POST = array();
 			}
 		}
@@ -50,9 +50,9 @@ class comments {
 	 *
 	 */
 	function check_comment_data() {
-		
-		if (!trim($_POST['comment_comment'])){
-			self::$error_on_comment['comment_comment'] = 1;
+
+		if (!trim($_POST['comment'])){
+			self::$error_on_comment['comment'] = 1;
 		}
 		if (!trim(@$_POST['name'])){
 			self::$error_on_comment['name'] = 1;
@@ -60,13 +60,12 @@ class comments {
 		if (!trim(@$_POST['email'])){
 			self::$error_on_comment['email'] = 1;
 		}
-		
-		$img = new Securimage();
- 		$valid = $img->check($_POST['code']);
-		if (!$valid){
+
+		$recaptcha = new Recaptcha();
+ 		$valid = $recaptcha->validateRecaptcha( $_POST['recaptcha_challenge_field'], $_POST['recaptcha_response_field'] );
+		if (!$valid)
 			self::$error_on_comment['captcha'] = 1;
-		}
-		
+
 		//ban list
 		$bans = file(dirname(__FILE__).'/../input/edit_comments/blacklist');
 		$newBans = array();
@@ -77,7 +76,7 @@ class comments {
 		}
 		if (in_array($_SERVER['REMOTE_ADDR'], $newBans)){
 			self::$error_on_comment['banned'] = 1;
-		}		
+		}
 	}
 
 	/**
@@ -87,40 +86,42 @@ class comments {
 	 * @return unknown
 	 */
 	function show_form($id) {
-		
+
 		self::_check_need_data();
-		
-		$msg   = '<p><strong>Please fill the form</strong></p>';
+
+		$recaptcha = new Recaptcha();
+
+		$msg   = '<div class="pleaseFillForm">'.WBG::message("comments_welcome", null,1).'</div>';
 		$show  = false;
-		if (self::$error_on_comment) {
+		$count = @mysql_result(mysql_query("SELECT count(*) FROM ".self::$sql_table_name." WHERE doc_id=".$id),0,0);
+
+		if ( self::$error_on_comment ) {
 			$show = true;
 			$msg  .= '<div class="alertBox">'.WBG::message("comments_please_check_fields", null,1).'</div>';
-		} elseif (self::$saved == 1) {
+		} elseif ( self::$saved == 1 ) {
 			$msg  .= '<div class="alertBox">'.WBG::message("comments_succesufuly_added", null,1).'</div>';
 		}
-		$count = @mysql_result(mysql_query("SELECT count(*) FROM ".self::$sql_table_name." WHERE doc_id=".$id),0,0);
-		
+
 		return '
-			<form method="post" style="'.($show?'':'display:none').'" action="#form" name="" id="commentForm">
-				'.(@self::$error_on_comment['banned']?'<div style="color:#E46C6E;padding:10px 3px">You are banned!</div>':'').'
+			<form method="post" style="'.($show?'':'display:none').'" action="#commentForm" name="" id="commentForm" class="clear">
+				'.(@self::$error_on_comment['banned']?'<div id="banned" style="padding:10px 3px">You are banned!</div>':'').'
 				'.$msg.'
 				<div class="input-box">
-					<label for="nameField" style="'.(@self::$error_on_comment['name']?'color:#E46C6E':'').'">'.WBG::message("comments_name", null, 1).' <span>*</span></label>
-					<input class="input" type="text" size="30" name="name" value="'.@$_POST['name'].'" id="nameField"/>
+					<label for="nameField">'.WBG::message("comments_name", null, 1).' <span>*</span></label>
+					<input class="input'.(@self::$error_on_comment['name']?' error':'').'" type="text" size="30" name="name" value="'.@$_POST['name'].'" id="nameField"/>
 				</div>
 				<div class="input-box">
-					<label for="emailField" style="'.(@self::$error_on_comment['email']?'color:#E46C6E':'').'">'.WBG::message("comments_email", null, 1).' <span>*</span></label>
-					<input class="input" type="text" size="30" name="email" value="'.@$_POST['email'].'" id="emailField"/>
+					<label for="emailField">'.WBG::message("comments_email", null, 1).' <span>*</span></label>
+					<input class="input'.(@self::$error_on_comment['email']?' error':'').'" type="text" size="30" name="email" value="'.@$_POST['email'].'" id="emailField"/>
 				</div>
 				<div class="input-box">
-					<label for="comentField" style="'.(@self::$error_on_comment['comment_comment']?'color:#E46C6E':'').'">'.WBG::message("comments_comment", null, 1).' <span>*</span></label>
-					<textarea rows="4" cols="20" name="comment_comment" class="long" id="comentField">'.@$_POST['comment_comment'].'</textarea>
+					<label for="commentField">'.WBG::message("comments_comment", null, 1).' <span>*</span></label>
+					<textarea rows="4" cols="20" name="comment" class="long'.(@self::$error_on_comment['comment']?' error':'').'" id="commentField">'.@$_POST['comment'].'</textarea>
 				</div>
-				<div class="input-box">
-					<label for="comentField" style="'.(@self::$error_on_comment['captcha']?'color:#E46C6E':'').'">'.WBG::message("comments_code", null, 1).' <span>*</span></label>
+				<div class="input-box captchaCode">
+					<label for="comentField" class="'.(@self::$error_on_comment['captcha']?'error':'').'">'.WBG::message("comments_code", null, 1).' <span>*</span></label>
 					<div class="captcha-box">
-						<input class="input" type="text" size="30" name="code" value=""/><br/>
-						<img style="margin-top:4px;" src="http://'.$_SERVER['HTTP_HOST'].'/wbg/modules/libraries/securimage/securimage_show.php?sid='.md5(uniqid(time())).'" />
+						'.$recaptcha->getRecaptchaHTML().'
 					</div>
 				</div>
 				<div class="input-box">
@@ -137,7 +138,7 @@ class comments {
 	 * @param unknown_type $comment
 	 */
 	function insert_comment($name, $email, $comment) {
-		
+
 		self::_check_need_data();
 
 		$SQL_str = "INSERT INTO ".self::$sql_table_name."
@@ -153,7 +154,7 @@ class comments {
 							datums			= '".time()."'";
 		mysql_query($SQL_str);
 		self::$saved = 1;
-		
+
 		//$SQL_str = "UPDATE  ".self::$sql_table_name." SET  comments_count = comments_count + 1 WHERE id=".self::$doc_id;
 		///mysql_query($SQL_str);
 		//echo mysql_error();
@@ -166,18 +167,18 @@ class comments {
 	 * @return unknown
 	 */
 	function show_comments($id = '', $table = '') {
-		
+
 		self::_check_need_data();
-		
+
 		$HTML = '';
 		$x 	  = 0;
 		$SQL_str = "SELECT * FROM ".self::$sql_table_name." WHERE active=1 AND doc_id = '".self::$doc_id."' and sql_table_name='".$table."' order by datums ASC";
 		$sql_res = mysql_query($SQL_str);
 		while ($arr = @mysql_fetch_assoc($sql_res)){
-			
+
 			$img   = '';
 			$class = ($x++ %2 == 0 ? 'white' : 'grey');
-			
+
 			$HTML .= '
 				<div class="item '.$class.'">
 					<div class="author"><a href="'.($arr['email']?'mailto:'.$arr['email']:'').'">'.$arr['name'].'</a></div>
@@ -185,11 +186,11 @@ class comments {
 					<p class="commentText">'.$arr['text'].'</p>
 				</div>';
 		}
-		
+
 		if ($HTML) $HTML = '<h4>Comments</h4><div id="postedComments">'.$HTML.'</div>';
 		return '<div id="writeComment"><a href="#" id="formOpener">'.WBG::message("write_comment",null,1).'</a></div>'.$HTML;
 	}
-	
+
 	/*
 	 * Show count of feedbacks
 	 *

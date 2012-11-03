@@ -3,8 +3,8 @@
 global $web;
 
 $textlist = $templateVars['textlist'];
-$wbgLayot = $templateVars['wbg_layout'];    
-$article  = isset( $templateVars['article'] ) ? $templateVars['article'] : $textlist->getOpenedObject( $_GET['doc'] );    
+$wbgLayot = $templateVars['wbg_layout'];
+$article  = isset( $templateVars['article'] ) ? $templateVars['article'] : $textlist->getOpenedObject( $_GET['doc'] );
 $content  = unserialize( $article['content'] );
 $img      = '';
 $back     = '';
@@ -28,7 +28,7 @@ else
     $date = date("d.m.Y H:i", $article['created']);
 
 $author = $textlist->_getOwner( $article['owner'] );
-	
+
 if ( !isset( $templateVars['no_back_button'] ) )
 	$back = '<div class="readmore"><a href="'.WBG::crosslink($web->active_category).'"><<< '.WBG::message("back", null, 1).'</a></div>';
 ?>

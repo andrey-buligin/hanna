@@ -398,22 +398,14 @@ nav > ul ul.level-3 {
 }
 /* Navigation */
 /************************************************************************************/
-/* Contact me */
-#googleMap {
-  float: right;
-  font-size: 1.2em;
-}
-#customForm {
-  padding: 0;
-  width: 60%;
-}
-#customForm label {
+/* Common form elements */
+form label {
   display: block;
   font-weight: 700;
   line-height: 1.4em;
   font-size: 1em;
 }
-#customForm input {
+form input {
   width: 220px;
   padding: 6px;
   color: #000;
@@ -421,12 +413,12 @@ nav > ul ul.level-3 {
   font-size: 11px;
   border: 1px solid #cecece;
 }
-#customForm input.error {
+form input.error {
   background: #f5dfa5;
   border-color: #e5bb49;
   font-style: italic;
 }
-#customForm textarea {
+form textarea {
   width: 100%;
   height: 120px;
   padding: 6px;
@@ -436,24 +428,69 @@ nav > ul ul.level-3 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#customForm textarea.error {
+form textarea.error {
   background: #f5dfa5;
   border-color: #e5bb49;
   font-style: italic;
 }
-#customForm div {
+#error {
+  margin: 15px 0;
+  border: 1px solid #efefef;
+}
+#error ul {
+  list-style: square;
+  padding: 5px;
+  font-size: 11px;
+}
+#error ul li {
+  list-style-position: inside;
+  line-height: 1.6em;
+}
+#error ul li strong {
+  color: #D0AB47;
+}
+#error.valid {
+  border: none;
+}
+#error.valid ul {
+  list-style: none;
+  font-size: 12px;
+}
+#error.valid strong {
+  color: #8B6A12;
+}
+/* Common form elements */
+/************************************************************************************/
+/* Common buttons */
+/* Common buttons*/
+/************************************************************************************/
+/* Contact me */
+#googleMap {
+  float: right;
+  font-size: 1em;
+}
+#customForm,
+#commentForm {
+  padding: 0;
+  width: 60%;
+}
+#customForm div,
+#commentForm div {
   margin-bottom: 15px;
 }
-#customForm div span {
+#customForm div span,
+#commentForm div span {
   margin-left: 10px;
   color: #b1b1b1;
   font-size: 11px;
 }
-#customForm div span.error {
+#customForm div span.error,
+#commentForm div span.error {
   color: #e46c6e;
   font-style: italic;
 }
-#customForm #send {
+#customForm #send,
+#commentForm #send {
   font-size: 1.2em;
   color: #5e5d5d;
   text-shadow: 0 1px #fff;
@@ -474,7 +511,8 @@ nav > ul ul.level-3 {
   background-image: -o-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
   background-image: linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
 }
-#customForm #send:hover {
+#customForm #send:hover,
+#commentForm #send:hover {
   color: #5e5d5d;
   text-shadow: 0 1px #b3b3b3;
   background-color: rgba(192, 192, 192, 0.9);
@@ -482,40 +520,103 @@ nav > ul ul.level-3 {
   -moz-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
 }
-#customForm #error {
-  margin: 15px 0;
-  border: 1px solid #efefef;
-}
-#customForm #error ul {
-  list-style: square;
-  padding: 5px;
-  font-size: 11px;
-}
-#customForm #error ul li {
-  list-style-position: inside;
-  line-height: 1.6em;
-}
-#customForm #error ul li strong {
-  color: #D0AB47;
-}
-#customForm #error.valid {
-  border: none;
-}
-#customForm #error.valid ul {
-  list-style: none;
-  font-size: 12px;
-}
-#customForm #error.valid strong {
-  color: #8B6A12;
-}
-#formOpener {
-  color: #e46c6d;
-  text-decoration: none;
-}
-#formOpener:hover {
-  color: #e46c6d;
-}
 /* Contact me */
+/************************************************************************************/
+/* Comments */
+#commentForm {
+  margin-top: 25px;
+}
+#commentForm .pleaseFillForm {
+  display: none;
+}
+#commentForm label {
+  float: left;
+  width: 120px;
+}
+#commentForm label span {
+  display: none;
+}
+#commentForm .captchaCode label {
+  display: none;
+}
+#commentForm .captchaCode #recaptcha_widget_div {
+  margin: 0 0 0 120px;
+}
+#commentForm .captchaCode #recaptcha_widget_div #recaptcha_area {
+  margin: 0;
+}
+#commentForm textarea {
+  width: 80%;
+  height: 120px;
+}
+#commentForm .captcha-box div {
+  margin: auto;
+}
+#commentForm .submit-button {
+  font-size: 1.2em;
+  color: #5e5d5d;
+  text-shadow: 0 1px #fff;
+  padding: 3px 15px;
+  width: auto;
+  float: right;
+  text-decoration: none;
+  border-radius: 3px;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.15), inset 0 1px #ffffff;
+  -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.15), inset 0 1px #ffffff;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.15), inset 0 1px #ffffff;
+  background-color: #cdcdcd;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49%, #d0d0d0), color-stop(50% #d9d9d9), color-stop(100% #eaeaea), color-stop(100% #eaeaea));
+  background-image: -webkit-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: -moz-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: -ms-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: -o-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  float: none;
+  margin-left: 120px;
+}
+#commentForm .submit-button:hover {
+  color: #5e5d5d;
+  text-shadow: 0 1px #b3b3b3;
+  background-color: rgba(192, 192, 192, 0.9);
+  -webkit-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+#writeComment {
+  margin-top: 1em;
+}
+#writeComment #formOpener {
+  font-size: 1.2em;
+  color: #5e5d5d;
+  text-shadow: 0 1px #fff;
+  padding: 3px 15px;
+  width: auto;
+  float: right;
+  text-decoration: none;
+  border-radius: 3px;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.15), inset 0 1px #ffffff;
+  -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.15), inset 0 1px #ffffff;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.15), inset 0 1px #ffffff;
+  background-color: #cdcdcd;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49%, #d0d0d0), color-stop(50% #d9d9d9), color-stop(100% #eaeaea), color-stop(100% #eaeaea));
+  background-image: -webkit-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: -moz-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: -ms-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: -o-linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  background-image: linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
+  float: none;
+}
+#writeComment #formOpener:hover {
+  color: #5e5d5d;
+  text-shadow: 0 1px #b3b3b3;
+  background-color: rgba(192, 192, 192, 0.9);
+  -webkit-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+/* Comments */
 /************************************************************************************/
 /* Gallery overrides */
 #content .rg-caption-wrapper,
@@ -532,6 +633,8 @@ nav > ul ul.level-3 {
   color: #000000;
   font-family: 'Rochester', Georgia, serif;
   font-size: 2.2em;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
 /* Gallery overrides */
 /************************************************************************************/
@@ -563,6 +666,10 @@ nav > ul ul.level-3 {
 }
 #blog-page .blog-item .tags strong {
   color: #5E5D5D;
+}
+#blog-page .blog-item.opened .readmore {
+  float: right;
+  margin: 0;
 }
 /* Blog */
 /************************************************************************************/

@@ -305,17 +305,9 @@
 
 /* Navigation */
 /************************************************************************************/
-/* Contact me */
+/* Common form elements */
 
-	#googleMap {
-		float: right;
-		font-size: 1.2em;
-	}
-
-	#customForm {
-		padding: 0;
-		width: 60%;
-
+	form {
 		label {
 			display: block;
 			font-weight: 700;
@@ -353,6 +345,74 @@
 			font-style: italic;
 		}
 
+	}
+
+	#error{
+		margin: 15px 0;
+		border: 1px solid #efefef;
+	}
+	#error ul {
+		list-style: square;
+		padding: 5px;
+		font-size: 11px;
+	}
+	#error ul li {
+		list-style-position: inside;
+		line-height: 1.6em;
+	}
+	#error ul li strong {
+		color: #D0AB47;
+	}
+	#error.valid {
+		border:none;
+	}
+	#error.valid ul {
+		list-style: none;
+		font-size: 12px;
+	}
+	#error.valid strong {
+		color: #8B6A12;
+	}
+
+/* Common form elements */
+/************************************************************************************/
+/* Common buttons */
+
+	.button() {
+		font-size: 1.2em;
+		color: #5e5d5d;
+		text-shadow: 0 1px #fff;
+		padding: 3px 15px;
+		width: auto;
+		float: right;
+		text-decoration: none;
+		border-radius: 3px;
+		border: solid 1px rgba(0,0,0,.1);
+		.box-shadow(0 1px 0 1px rgba(0,0,0,.15), inset 0 1px #fff);
+		.linear-gradient-bottom(#cdcdcd, #d0d0d0, 49%, #d9d9d9, 50%, #eaeaea, 100%, #eaeaea, 100%);
+
+		&:hover {
+			color: #5e5d5d;
+			text-shadow: 0 1px #b3b3b3;
+			background-color: rgba(192,192,192,.9);
+			.box-shadow(0 1px rgba(255,255,255,.65), inset 0 1px 5px rgba(0,0,0,.5));
+		}
+	}
+
+/* Common buttons*/
+/************************************************************************************/
+/* Contact me */
+
+	#googleMap {
+		float: right;
+		font-size: 1em;
+	}
+
+	#customForm,
+	#commentForm {
+		padding: 0;
+		width: 60%;
+
 		div {
 			margin-bottom: 15px;
 		}
@@ -369,63 +429,77 @@
 		}
 
 		#send {
-			font-size: 1.2em;
-			color: #5e5d5d;
-			text-shadow: 0 1px #fff;
-			padding: 3px 15px;
-			width: auto;
-			float: right;
-			text-decoration: none;
-			border-radius: 3px;
-			border: solid 1px rgba(0,0,0,.1);
-			.box-shadow(0 1px 0 1px rgba(0,0,0,.15), inset 0 1px #fff);
-			.linear-gradient-bottom(#cdcdcd, #d0d0d0, 49%, #d9d9d9, 50%, #eaeaea, 100%, #eaeaea, 100%);
+			.button();
 		}
 
-		#send:hover {
-			color: #5e5d5d;
-			text-shadow: 0 1px #b3b3b3;
-			background-color: rgba(192,192,192,.9);
-			.box-shadow(0 1px rgba(255,255,255,.65), inset 0 1px 5px rgba(0,0,0,.5));
-		}
-
-		#error{
-			margin: 15px 0;
-			border: 1px solid #efefef;
-		}
-		#error ul {
-			list-style: square;
-			padding: 5px;
-			font-size: 11px;
-		}
-		#error ul li {
-			list-style-position: inside;
-			line-height: 1.6em;
-		}
-		#error ul li strong {
-			color: #D0AB47;
-		}
-		#error.valid {
-			border:none;
-		}
-		#error.valid ul {
-			list-style: none;
-			font-size: 12px;
-		}
-		#error.valid strong {
-			color: #8B6A12;
-		}
-	}
-
-	#formOpener {
-		color: #e46c6d;
-		text-decoration:none;
-	}
-	#formOpener:hover {
-		color: #e46c6d;
 	}
 
 /* Contact me */
+/************************************************************************************/
+/* Comments */
+
+	@label-width: 120px;
+
+	#commentForm {
+		margin-top: 25px;
+
+		.pleaseFillForm {
+			display: none;
+		}
+
+		label {
+			float: left;
+			width: @label-width;
+
+			span {
+				display: none;
+			}
+		}
+
+		.captchaCode {
+			label {
+				display: none;
+			}
+
+			#recaptcha_widget_div {
+				margin: 0 0 0 @label-width;
+
+				#recaptcha_area {
+					margin: 0;
+				}
+			}
+		}
+
+		textarea {
+			width: 80%;
+			height: 120px;
+		}
+
+		.captcha-box {
+			div  {
+				margin: auto;
+			}
+		}
+
+		.submit-button {
+			.button();
+			float: none;
+			margin-left: @label-width;
+		}
+
+	}
+
+	#writeComment {
+		margin-top: 1em;
+
+		#formOpener {
+			.button();
+			float: none;
+
+		}
+	}
+
+/* Comments */
 /************************************************************************************/
 /* Gallery overrides */
 
@@ -446,6 +520,8 @@
 			color: #000000;
 	    	font-family: 'Rochester',Georgia,serif;
 	   		font-size: 2.2em;
+	   		text-transform: capitalize;
+	   		white-space: nowrap;
 		}
 	}
 
@@ -483,12 +559,22 @@
 			.tags {
 				color: #8B6A12;
 				//color: #d0ab47;
+
 				a {
 					color: #8B6A12;
 				}
 				strong {
 					color: #5E5D5D;
 				}
+			}
+
+			&.opened {
+
+				.readmore {
+					float: right;
+					margin: 0;
+				}
+
 			}
 		}
 
