@@ -1,79 +1,112 @@
-/***************************/
-//@Author: Adrian "yEnS" Mato Gondelle & Ivan Guardado Castro
-//@website: www.yensdesign.com
-//@email: yensamg@gmail.com
-//@license: Feel free to use it, but keep this credits please!
-/***************************/
+/******************************************************/
+//@Author: Andrey Buligin
+//@website: www.andreybuligin.com
+//@email: buligin.developer@gmail.com
 
-$(document).ready(function(){
-	//global vars
-	var form = $("#customForm");
-	var name = $("#name");
-	var nameInfo = $("#nameInfo");
-	var email = $("#email");
-	var emailInfo = $("#emailInfo");
-	var message = $("#message");
+(function( $ ) {
 
-	//On blur
-	name.blur(validateName);
-	email.blur(validateEmail);
-	//On key press
-	name.keyup(validateName);
-	message.keyup(validateMessage);
-	//On Submitting
-	form.submit(function(){
-		if(validateName() & validateEmail() & validateMessage())
-			return true
-		else
-			return false;
-	});
+	$.fn.formValidation = function(options) {
 
-	//validation functions
-	function validateEmail(){
-		//testing regular expression
-		var a = $("#email").val();
-		var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
-		//if it's valid email
-		if(filter.test(a)){
-			email.removeClass("error");
-			emailInfo.text("Valid E-mail please");
-			emailInfo.removeClass("error");
-			return true;
+		var self = this,
+			form = $(this),
+			elements = [],
+			elementsFunc = [];
+
+		if (options) {
+
+			$.each(options, function(index, object) {
+				var el = $(object.selector),
+					elHelper = $(object.helperSelector),
+					validationFunc;
+
+				elements.push(el);
+
+				switch (object.type) {
+					case 'text': validationFunc = function() {
+									return validateText(el, elHelper);
+								};
+								break;
+					case 'email': validationFunc = function(){
+									return validateEmail(el, elHelper);
+								};
+								break;
+					case 'textarea': validationFunc = function(){
+									return validateTextarea(el);
+								};
+								break;
+				}
+
+				el.blur(validationFunc);
+				el.keyup(validationFunc);
+
+				elementsFunc.push(validationFunc);
+			});
+
+			//On Submitting
+			form.submit(function() {
+				var isValid = true;
+
+				for (i = 0; i < elementsFunc.length; i++) {
+					if (!isValid) break;
+					isValid = elementsFunc[i]();
+				}
+
+				if ( isValid ) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+
 		}
-		//if it's NOT valid
-		else{
-			email.addClass("error");
-			emailInfo.text("Please type a valid e-mail address!");
-			emailInfo.addClass("error");
-			return false;
+
+		//validation functions
+		function validateEmail(el, elHelper) {
+			var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+
+			if ( filter.test(el.val()) ) {
+				el.removeClass("error");
+				elHelper.text("");
+				elHelper.removeClass("error");
+				return true;
+			} else {
+				el.addClass("error");
+				elHelper.text("Please type a valid e-mail address!");
+				elHelper.addClass("error");
+				return false;
+			}
 		}
-	}
-	function validateName(){
-		//if it's NOT valid
-		if(name.val().length < 3){
-			name.addClass("error");
-			nameInfo.text("Please type name with more than 2 letters!");
-			nameInfo.addClass("error");
-			return false;
+
+		function validateText(el, elHelper) {
+			var val = el.val(),
+				filter = /^[a-zA-Z_.-]+$/;
+
+			if ( val.length < 3 || !filter.test(val) ) {
+				el.addClass("error");
+				elHelper.text("Please type valid name with more than 2 letters!");
+				elHelper.addClass("error");
+				return false;
+			} else {
+				el.removeClass("error");
+				elHelper.text("");
+				elHelper.removeClass("error");
+				return true;
+			}
 		}
-		//if it's valid
-		else{
-			name.removeClass("error");
-			nameInfo.text("");
-			nameInfo.removeClass("error");
-			return true;
+
+		function validatePhone(el, elHelper) {
+
 		}
-	}
-	function validateMessage(){
-		//it's NOT valid
-		if(message.val().length < 10){
-			message.addClass("error");
-			return false;
+
+		function validateTextarea(el) {
+			if ( el.val().length < 10 ) {
+				el.addClass("error");
+				return false;
+			} else {
+				el.removeClass("error");
+				return true;
+			}
 		}
-		//it's valid
-		else{
-			message.removeClass("error");
-			return true;
-		}
-	}
-});
+
+	};
+})( jQuery );

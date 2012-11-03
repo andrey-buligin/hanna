@@ -102,17 +102,19 @@ class comments {
 			$msg  .= '<div class="alertBox">'.WBG::message("comments_succesufuly_added", null,1).'</div>';
 		}
 
-		return '
+		return '<div id="writeComment"><a href="#" id="formOpener">'.WBG::message("write_comment",null,1).'</a></div>
 			<form method="post" style="'.($show?'':'display:none').'" action="#commentForm" name="" id="commentForm" class="clear">
 				'.(@self::$error_on_comment['banned']?'<div id="banned" style="padding:10px 3px">You are banned!</div>':'').'
 				'.$msg.'
 				<div class="input-box">
 					<label for="nameField">'.WBG::message("comments_name", null, 1).' <span>*</span></label>
 					<input class="input'.(@self::$error_on_comment['name']?' error':'').'" type="text" size="30" name="name" value="'.@$_POST['name'].'" id="nameField"/>
+					<span id="nameInfo" class="validationHelper"></span>
 				</div>
 				<div class="input-box">
 					<label for="emailField">'.WBG::message("comments_email", null, 1).' <span>*</span></label>
 					<input class="input'.(@self::$error_on_comment['email']?' error':'').'" type="text" size="30" name="email" value="'.@$_POST['email'].'" id="emailField"/>
+					<span id="emailInfo" class="validationHelper"></span>
 				</div>
 				<div class="input-box">
 					<label for="commentField">'.WBG::message("comments_comment", null, 1).' <span>*</span></label>
@@ -128,6 +130,32 @@ class comments {
 					<input class="submit-button" name="submit" value="'.WBG::message("comments_add", null, 1).'" type="submit" />
 				</div>
 			</form>';
+	}
+
+	public function showFrontEndValidation()
+	{
+		return '<script type="text/javascript" src="js/plugins/validation.js"></script>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$("#commentForm").formValidation({
+							name: {
+								type: "text",
+								selector: "#nameField",
+								helperSelector: "#nameInfo"
+							},
+							email: {
+								type: "email",
+								selector: "#emailField",
+								helperSelector: "#emailInfo"
+							},
+							comment: {
+								type: "textarea",
+								selector: "#commentField",
+								helperSelector: ""
+							}
+						});
+					});
+				</script>';
 	}
 
 	/**
@@ -188,7 +216,7 @@ class comments {
 		}
 
 		if ($HTML) $HTML = '<h4>Comments</h4><div id="postedComments">'.$HTML.'</div>';
-		return '<div id="writeComment"><a href="#" id="formOpener">'.WBG::message("write_comment",null,1).'</a></div>'.$HTML;
+		return $HTML;
 	}
 
 	/*

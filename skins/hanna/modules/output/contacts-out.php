@@ -81,3 +81,24 @@
 </form>
 </article>
 <script type="text/javascript" src="js/plugins/validation.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#customForm').formValidation({
+			name: {
+				type: 'text',
+				selector: '#name',
+				helperSelector: '#nameInfo'
+			},
+			email: {
+				type: 'email',
+				selector: '#email',
+				helperSelector: '#emailInfo'
+			},
+			comment: {
+				type: 'textarea',
+				selector: '#message',
+				helperSelector: ''
+			}
+		});
+	});
+</script>

@@ -405,7 +405,9 @@ class TextListOut
 		function showComments( $docId )
 		{
 			comments::init( $docId, self::$TABLE);
-			return comments::show_comments( $docId, self::$TABLE ).comments::show_form( $docId );
+			return comments::show_form( $docId ).
+				   comments::showFrontEndValidation().
+				   comments::show_comments( $docId, self::$TABLE );
 		}
 
 		function getCommentsCount( $docId )

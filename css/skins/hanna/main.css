@@ -525,6 +525,7 @@ form textarea.error {
 /* Comments */
 #commentForm {
   margin-top: 25px;
+  width: 70%;
 }
 #commentForm .pleaseFillForm {
   display: none;
