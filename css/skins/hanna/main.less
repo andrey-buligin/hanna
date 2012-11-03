@@ -81,10 +81,11 @@
 
 	#footerContainer {
 		width: 990px;
-		padding: 0px 0px 0px 0px;
+		padding: 10px 0px 0px 0px;
 		color: #3f3f3f;
 		font-size: 1.2em;
 		position: relative;
+		border-top: 2px solid #d0ab47;
 
 		#copyright {
 			float: right;
@@ -441,7 +442,6 @@
 	@label-width: 120px;
 
 	#commentForm {
-		margin-top: 25px;
 		width: 70%;
 
 		.pleaseFillForm {
@@ -494,13 +494,67 @@
 
 	}
 
+	.pleaseFillForm {
+		display: none;
+	}
+
+	.submitErr,
+	.submitSucc {
+		color: #8B6A12;
+		margin: 0 0 0.5em 0;
+	}
+
 	#writeComment {
 		margin-top: 1em;
+		margin-bottom: 2em;
 
 		#formOpener {
 			.button();
 			float: none;
 
+		}
+	}
+
+	.commentsTitle {
+		font-size: 2em;
+		color: #000;
+		font-weight: normal;
+		font-family: 'Rochester',Georgia,serif;
+		margin: 0 0 0.5em 0;
+		padding-top: 0.5em;
+		border-top: 1px solid #D0AB47;
+	}
+
+	#postedComments {
+
+		.item {
+			margin-bottom: 0.5em;
+			border-bottom: 1px solid #B3B3B3;
+			padding: 0 15px;
+
+			&:last-child {
+				margin: none;
+				border: none;
+			}
+
+			.author {
+				font-size: 1em;
+				margin: 0;
+				color: #8B6A12;
+				text-transform: capitalize;
+				position: absolute;
+			}
+
+			.date {
+				display: block;
+				font-size: 0.91em;
+				color: #808080;
+				text-align: right;
+			}
+
+			.commentText {
+
+			}
 		}
 	}
 
@@ -551,9 +605,10 @@
 			p.date {
 				margin: 0 0 10px 0;
 				color: #5E5D5D;
-				font-weight: bold;
+
 				.author {
 					font-family: Arial;
+					font-weight: bold;
 				}
 			}
 
@@ -580,6 +635,12 @@
 					margin: 0;
 				}
 
+			}
+
+			&:last-child {
+				border: none;
+				padding-bottom: 0;
+				margin-bottom: 0;
 			}
 		}
 

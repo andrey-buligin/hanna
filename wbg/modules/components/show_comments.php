@@ -97,15 +97,15 @@ class comments {
 
 		if ( self::$error_on_comment ) {
 			$show = true;
-			$msg  .= '<div class="error">'.WBG::message("comments_please_check_fields", null,1).'</div>';
+			$msg  .= '<div class="submitErr">'.WBG::message("comments_please_check_fields", null,1).'</div>';
 		} elseif ( self::$saved == 1 ) {
-			$msg  .= '<div class="alertBox">'.WBG::message("comments_succesufuly_added", null,1).'</div>';
+			$msg  .= '<div class="submitSucc">'.WBG::message("comments_succesufuly_added", null,1).'</div>';
 		}
 
 		return '<div id="writeComment"><a href="#" id="formOpener">'.WBG::message("write_comment",null,1).'</a></div>
-			<form method="post" style="'.($show?'':'display:none').'" action="#commentForm" name="" id="commentForm" class="clear">
 				'.(@self::$error_on_comment['banned']?'<div id="banned" style="padding:10px 3px">You are banned!</div>':'').'
 				'.$msg.'
+			<form method="post" style="'.($show?'':'display:none').'" action="#commentForm" name="" id="commentForm" class="clear">
 				<div class="input-box">
 					<label for="nameField">'.WBG::message("comments_name", null, 1).' <span>*</span></label>
 					<input class="input'.(@self::$error_on_comment['name']?' error':'').'" type="text" size="30" name="name" value="'.@$_POST['name'].'" id="nameField"/>
@@ -208,14 +208,15 @@ class comments {
 			$class = ($x++ %2 == 0 ? 'white' : 'grey');
 
 			$HTML .= '
-				<div class="item '.$class.'">
-					<div class="author"><a href="'.($arr['email']?'mailto:'.$arr['email']:'').'">'.$arr['name'].'</a></div>
-					<div class="date">commented on '.date('d.m.Y. at H:i', $arr['datums']).'</div>
+				<article class="item '.$class.'">
+					<header><h5 class="author">'.$arr['name'].'</h5></header>
+					<time datetime="'.date('Y-m-d', $arr['datums']).'" class="date">'.date('d.m.Y.  H:i', $arr['datums']).'</time>
 					<p class="commentText">'.$arr['text'].'</p>
-				</div>';
+				</article>';
 		}
 
-		if ($HTML) $HTML = '<h4>Comments</h4><div id="postedComments">'.$HTML.'</div>';
+		if ($HTML) $HTML = '<h4 class="commentsTitle">Comments</h4>
+							<section id="postedComments">'.$HTML.'</section>';
 		return $HTML;
 	}
 

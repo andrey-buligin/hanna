@@ -32,7 +32,7 @@ $author = $textlist->_getOwner( $article['owner'] );
 if ( !isset( $templateVars['no_back_button'] ) )
 	$back = '<div class="readmore"><a href="'.WBG::crosslink($web->active_category).'"><<< '.WBG::message("back", null, 1).'</a></div>';
 ?>
-<div id="blog-page">
+<article id="blog-page">
     <div class="blog-item opened">
     	<h1><?php echo $content['title']; ?></h1>
     	<p class="date">
@@ -47,4 +47,4 @@ if ( !isset( $templateVars['no_back_button'] ) )
     	<div class="clear-block"></div>
     	<?php echo $textlist->showComments( $article['id'] ); ?>
     </div>
-</div>
+</article>

@@ -157,10 +157,11 @@ a:hover {
 }
 #footerContainer {
   width: 990px;
-  padding: 0px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
   color: #3f3f3f;
   font-size: 1.2em;
   position: relative;
+  border-top: 2px solid #d0ab47;
 }
 #footerContainer #copyright {
   float: right;
@@ -524,7 +525,6 @@ form textarea.error {
 /************************************************************************************/
 /* Comments */
 #commentForm {
-  margin-top: 25px;
   width: 70%;
 }
 #commentForm .pleaseFillForm {
@@ -587,8 +587,17 @@ form textarea.error {
 #commentForm div.error {
   color: #8B6A12;
 }
+.pleaseFillForm {
+  display: none;
+}
+.submitErr,
+.submitSucc {
+  color: #8B6A12;
+  margin: 0 0 0.5em 0;
+}
 #writeComment {
   margin-top: 1em;
+  margin-bottom: 2em;
 }
 #writeComment #formOpener {
   font-size: 1.2em;
@@ -619,6 +628,37 @@ form textarea.error {
   -webkit-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+.commentsTitle {
+  font-size: 2em;
+  color: #000;
+  font-weight: normal;
+  font-family: 'Rochester', Georgia, serif;
+  margin: 0 0 0.5em 0;
+  padding-top: 0.5em;
+  border-top: 1px solid #D0AB47;
+}
+#postedComments .item {
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #B3B3B3;
+  padding: 0 15px;
+}
+#postedComments .item:last-child {
+  margin: none;
+  border: none;
+}
+#postedComments .item .author {
+  font-size: 1em;
+  margin: 0;
+  color: #8B6A12;
+  text-transform: capitalize;
+  position: absolute;
+}
+#postedComments .item .date {
+  display: block;
+  font-size: 0.91em;
+  color: #808080;
+  text-align: right;
 }
 /* Comments */
 /************************************************************************************/
@@ -654,10 +694,10 @@ form textarea.error {
 #blog-page .blog-item p.date {
   margin: 0 0 10px 0;
   color: #5E5D5D;
-  font-weight: bold;
 }
 #blog-page .blog-item p.date .author {
   font-family: Arial;
+  font-weight: bold;
 }
 #blog-page .blog-item img.f-left {
   margin: 0 10px 5px 0;
@@ -674,6 +714,11 @@ form textarea.error {
 #blog-page .blog-item.opened .readmore {
   float: right;
   margin: 0;
+}
+#blog-page .blog-item:last-child {
+  border: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 /* Blog */
 /************************************************************************************/
