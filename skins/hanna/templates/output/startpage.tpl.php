@@ -7,6 +7,7 @@
         	</nav>
     	</header>
     	<section id="content">
+            <?php WBG::message("addThis"); ?>
     		<?php WBG::content(); ?>
     	</section>
     	<footer id="footerContainer">

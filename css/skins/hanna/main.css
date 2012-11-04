@@ -662,6 +662,34 @@ form textarea.error {
 }
 /* Comments */
 /************************************************************************************/
+/* AddThis */
+.addthis_toolbox {
+  float: right;
+  min-width: 242px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+}
+.addthis_toolbox.visible {
+  opacity: 1;
+  filter: alpha(opacity=0);
+}
+.portfolioContent .addthis_toolbox {
+  margin-right: 15px;
+  margin-top: -16px;
+}
+/* AddThis */
+/************************************************************************************/
 /* Gallery overrides */
 #content .rg-caption-wrapper,
 #content .es-carousel-wrapper {

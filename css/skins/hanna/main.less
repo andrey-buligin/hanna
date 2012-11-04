@@ -560,6 +560,29 @@
 
 /* Comments */
 /************************************************************************************/
+/* AddThis */
+
+	.addthis_toolbox {
+		float: right;
+		min-width: 242px;
+		.opacity(0);
+		.transition(all 0.4s);
+		.translateHardware(0,0);
+
+		&.visible {
+			.opacity(1);
+		}
+	}
+
+	.portfolioContent {
+		.addthis_toolbox {
+			margin-right: 15px;
+    		margin-top: -16px;
+		}
+	}
+
+/* AddThis */
+/************************************************************************************/
 /* Gallery overrides */
 
 	#content {

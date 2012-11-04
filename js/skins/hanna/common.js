@@ -12,14 +12,22 @@
         });
 
         // blog comments
-         $('#formOpener').toggle(function(e){
+        $('#formOpener').toggle(function(e){
             e.preventDefault();
             $('#commentForm').show('normal');
             $("#commentForm :input:visible:enabled:last").focus();
-         }, function(e){
+        }, function(e){
             e.preventDefault();
             $('#commentForm').hide('normal');
-         });
+        });
+
+        //addThis
+        addthis.init();
+        addthis.addEventListener('addthis.ready', function(){
+            setTimeout(function(){
+                $('.addthis_toolbox').addClass('visible');
+            }, 500);
+        });
 
          // opening popups for images
 //       $("a.simpleImage").fancybox({

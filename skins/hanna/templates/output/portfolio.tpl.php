@@ -6,7 +6,8 @@
         	    <?php WBG::module("top-navigation"); ?>
         	</nav>
     	</header>
-    	<section id="content">
+    	<section id="content" class="portfolioContent">
+            <?php WBG::message("addThis"); ?>
     		<?php WBG::content(); ?>
     	</section>
     	<footer id="footerContainer">
