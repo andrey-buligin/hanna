@@ -1,16 +1,16 @@
 <?php
 
 	include_once(dirname(__FILE__).'/../libraries/portfolio.class/portfolio.class.php');
-	
+
 	$output = '';
 	$imageCategories  = array();
 	$portfolioManager = new PortfolioManager( $_CFG['portfolio_folder_id'] );
 	$portfolioCategories = $portfolioManager->getPartfolioCategories();
-	
+
 	$data = @unserialize(file_get_contents(dirname(__FILE__).'/../input/startpage_fading_images/__saved_data_'.$web->active_category));
 	$rand_keys = array_keys($portfolioCategories);
 	shuffle( $rand_keys );
-	
+
     foreach ( $rand_keys as $catId) {
         $catSelected = 'images_'.$catId;
         $sql = 'SELECT id from wbg_tree_categories
@@ -31,9 +31,10 @@
 	       }
 	       $output = '<ul id="fade" class="innerfade">'.$output.'</ul>';
 	    }
-	    
+
     }
 
 	//OUTPUT
 	$return_from_module = '<div id="innerFadeContainer">'.$output.'</div>';
 ?>
+<script type="text/javascript" src="js/plugins/innerFade.js"></script>

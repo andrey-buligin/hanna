@@ -139,7 +139,7 @@ Desktop.ini
 dist
 build
 eggs
-parts
+#parts
 bin
 var
 sdist
