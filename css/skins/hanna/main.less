@@ -1,6 +1,10 @@
 @import "../../prefixer.less";
 
 @img-url: "images/skins/hanna/building/";
+@link-color: #8B6A12;
+@dark-yellow: #8B6A12;
+@yellow: #D0AB47;
+@error-helper-color: #e46c6e;
 
 /************************************************************************************/
 /* COMMON */
@@ -18,7 +22,7 @@
 	}
 
 	form 	{ margin:0 0 0 0;}
-	a 		{ text-decoration:none; color:#8B6A12; outline:none; }
+	a 		{ text-decoration:none; color: @link-color; outline:none; }
 	a:hover	{ text-decoration:underline}
 
 	.upcase	{ text-transform:uppercase}
@@ -62,7 +66,7 @@
 	#content {
 		font-size: 1.3em;
 		padding: 20px 0;
-		border-top: 5px solid #d0ab47;
+		border-top: 5px solid @yellow;
 		min-height: 100px;
 		color: #5E5D5D;
 
@@ -85,7 +89,7 @@
 		color: #3f3f3f;
 		font-size: 1.2em;
 		position: relative;
-		border-top: 2px solid #d0ab47;
+		border-top: 2px solid @yellow;
 
 		#copyright {
 			float: right;
@@ -113,7 +117,7 @@
 			text-transfer: uppercase;
 
 			span {
-				color: #8B6A12;
+				color: @dark-yellow;
 			}
 
 			span.followUs {
@@ -308,6 +312,8 @@
 /************************************************************************************/
 /* Common form elements */
 
+	@error-bg-color: #f5dfa5;
+
 	form {
 		label {
 			display: block;
@@ -326,7 +332,7 @@
 		}
 
 		input.error {
-			background: #f5dfa5;
+			background: @error-bg-color;
 			border-color: #e5bb49;
 			font-style: italic;
 		}
@@ -341,7 +347,7 @@
 		}
 
 		textarea.error {
-			background: #f5dfa5;
+			background: @error-bg-color;
 			border-color: #e5bb49;
 			font-style: italic;
 		}
@@ -362,7 +368,7 @@
 		line-height: 1.6em;
 	}
 	#error ul li strong {
-		color: #D0AB47;
+		color: @yellow;
 	}
 	#error.valid {
 		border:none;
@@ -372,7 +378,7 @@
 		font-size: 12px;
 	}
 	#error.valid strong {
-		color: #8B6A12;
+		color: @dark-yellow;
 	}
 
 /* Common form elements */
@@ -425,7 +431,7 @@
 		}
 
 		div span.error {
-			color: #e46c6e;
+			color: @error-helper-color;
 			font-style: italic;
 		}
 
@@ -480,6 +486,10 @@
 			div  {
 				margin: auto;
 			}
+
+			&.error input {
+				background: @error-bg-color;
+			}
 		}
 
 		.submit-button {
@@ -489,7 +499,7 @@
 		}
 
 		div.error {
-			color: #8B6A12;
+			color: @dark-yellow;
 		}
 
 	}
@@ -500,7 +510,7 @@
 
 	.submitErr,
 	.submitSucc {
-		color: #8B6A12;
+		color: @dark-yellow;
 		margin: 0 0 0.5em 0;
 	}
 
@@ -522,7 +532,7 @@
 		font-family: 'Rochester',Georgia,serif;
 		margin: 0 0 0.5em 0;
 		padding-top: 0.5em;
-		border-top: 1px solid #D0AB47;
+		border-top: 1px solid @yellow;
 	}
 
 	#postedComments {
@@ -540,7 +550,7 @@
 			.author {
 				font-size: 1em;
 				margin: 0;
-				color: #8B6A12;
+				color: @dark-yellow;
 				text-transform: capitalize;
 				position: absolute;
 			}
@@ -621,7 +631,6 @@
 			h2 {
 				margin: 0.25em 0;
 				a {
-					//color: #d0ab47;
 				}
 			}
 
@@ -640,11 +649,10 @@
 			}
 
 			.tags {
-				color: #8B6A12;
-				//color: #d0ab47;
+				color: @dark-yellow;
 
 				a {
-					color: #8B6A12;
+					color: @link-color;
 				}
 				strong {
 					color: #5E5D5D;

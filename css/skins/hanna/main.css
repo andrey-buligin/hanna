@@ -95,7 +95,7 @@ form {
 }
 a {
   text-decoration: none;
-  color: #8B6A12;
+  color: #8b6a12;
   outline: none;
 }
 a:hover {
@@ -186,7 +186,7 @@ a:hover {
   text-transfer: uppercase;
 }
 #footerContainer #contacts span {
-  color: #8B6A12;
+  color: #8b6a12;
 }
 #footerContainer #contacts span.followUs {
   float: right;
@@ -448,7 +448,7 @@ form textarea.error {
   line-height: 1.6em;
 }
 #error ul li strong {
-  color: #D0AB47;
+  color: #d0ab47;
 }
 #error.valid {
   border: none;
@@ -458,7 +458,7 @@ form textarea.error {
   font-size: 12px;
 }
 #error.valid strong {
-  color: #8B6A12;
+  color: #8b6a12;
 }
 /* Common form elements */
 /************************************************************************************/
@@ -553,6 +553,9 @@ form textarea.error {
 #commentForm .captcha-box div {
   margin: auto;
 }
+#commentForm .captcha-box.error input {
+  background: #f5dfa5;
+}
 #commentForm .submit-button {
   font-size: 1.2em;
   color: #5e5d5d;
@@ -585,14 +588,14 @@ form textarea.error {
   box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 #commentForm div.error {
-  color: #8B6A12;
+  color: #8b6a12;
 }
 .pleaseFillForm {
   display: none;
 }
 .submitErr,
 .submitSucc {
-  color: #8B6A12;
+  color: #8b6a12;
   margin: 0 0 0.5em 0;
 }
 #writeComment {
@@ -636,7 +639,7 @@ form textarea.error {
   font-family: 'Rochester', Georgia, serif;
   margin: 0 0 0.5em 0;
   padding-top: 0.5em;
-  border-top: 1px solid #D0AB47;
+  border-top: 1px solid #d0ab47;
 }
 #postedComments .item {
   margin-bottom: 0.5em;
@@ -650,7 +653,7 @@ form textarea.error {
 #postedComments .item .author {
   font-size: 1em;
   margin: 0;
-  color: #8B6A12;
+  color: #8b6a12;
   text-transform: capitalize;
   position: absolute;
 }
@@ -731,10 +734,10 @@ form textarea.error {
   margin: 0 10px 5px 0;
 }
 #blog-page .blog-item .tags {
-  color: #8B6A12;
+  color: #8b6a12;
 }
 #blog-page .blog-item .tags a {
-  color: #8B6A12;
+  color: #8b6a12;
 }
 #blog-page .blog-item .tags strong {
   color: #5E5D5D;

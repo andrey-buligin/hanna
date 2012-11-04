@@ -121,8 +121,8 @@ class comments {
 					<textarea rows="4" cols="20" name="comment" class="long'.(@self::$error_on_comment['comment']?' error':'').'" id="commentField">'.@$_POST['comment'].'</textarea>
 				</div>
 				<div class="input-box captchaCode">
-					<label for="comentField" class="'.(@self::$error_on_comment['captcha']?'error':'').'">'.WBG::message("comments_code", null, 1).' <span>*</span></label>
-					<div class="captcha-box">
+					<label for="comentField">'.WBG::message("comments_code", null, 1).' <span>*</span></label>
+					<div class="captcha-box'.(@self::$error_on_comment['captcha']?' error':'').'">
 						'.$recaptcha->getRecaptchaHTML().'
 					</div>
 				</div>
