@@ -85,15 +85,13 @@ class comments {
 	 * @param unknown_type $id
 	 * @return unknown
 	 */
-	function show_form($id) {
+	function show_form() {
 
 		self::_check_need_data();
 
 		$recaptcha = new Recaptcha();
-
-		$msg   = '<div class="pleaseFillForm">'.WBG::message("comments_welcome", null,1).'</div>';
-		$show  = false;
-		$count = @mysql_result(mysql_query("SELECT count(*) FROM ".self::$sql_table_name." WHERE doc_id=".$id),0,0);
+		$msg       = '<div class="pleaseFillForm">'.WBG::message("comments_welcome", null,1).'</div>';
+		$show      = false;
 
 		if ( self::$error_on_comment ) {
 			$show = true;
@@ -194,13 +192,20 @@ class comments {
 	 *
 	 * @return unknown
 	 */
-	function show_comments($id = '', $table = '') {
+	function show_comments($id = '', $table = '', $title = 'Comments') {
 
 		self::_check_need_data();
 
 		$HTML = '';
 		$x 	  = 0;
-		$SQL_str = "SELECT * FROM ".self::$sql_table_name." WHERE active=1 AND doc_id = '".self::$doc_id."' and sql_table_name='".$table."' order by datums ASC";
+
+		if ( $id && $table ) {
+			$conditions = "AND doc_id = '".self::$doc_id."' AND sql_table_name='".$table;
+		} else {
+			$conditions = "";
+		}
+
+		$SQL_str = "SELECT * FROM ".self::$sql_table_name." WHERE active=1 ".$conditions." order by datums ASC";
 		$sql_res = mysql_query($SQL_str);
 		while ($arr = @mysql_fetch_assoc($sql_res)){
 
@@ -215,7 +220,7 @@ class comments {
 				</article>';
 		}
 
-		if ($HTML) $HTML = '<section id="postedComments"><h4 class="commentsTitle">Comments</h4>'.$HTML.'</section>';
+		if ($HTML) $HTML = '<section id="postedComments"><h4 class="commentsTitle">'.$title.'</h4>'.$HTML.'</section>';
 
 		return $HTML;
 	}
