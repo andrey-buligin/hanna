@@ -63,6 +63,48 @@
 		height:222px;
 	}
 
+	#logo {
+		a {
+			font-size: 6em;
+			color: @dark-yellow;
+			color: #576F3D;
+			font-weight: bold;
+			font-family: 'Rochester', Georgia;
+
+			.hanna {
+				font-weight: normal;
+				font-size: 0.7em;
+				color: #000;
+				position: relative;
+				font-family: 'Brush Script MT';
+				top: 0.5em;
+			}
+
+			.omg {
+				font-size: 0.5em;
+				color: #000;
+				position: relative;
+				top: 1em;
+				font-family: Georgia, serif;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			.circle {
+				float: left;
+				margin-right: 20px;
+				.border-radius(50px);
+				height: 100px;
+				width: 100px;
+				border: 4px solid rgba(208,171,71,.7);
+				background: url('/images/skins/hanna/building/beautybyhanna.jpg') 0px 0 no-repeat;
+				background-size: 100px 100px;
+			}
+		}
+	}
+
 	#content {
 		font-size: 1.3em;
 		padding: 20px 0;
