@@ -4,12 +4,14 @@
     $(document).ready( function(){
 
         // fading  startpage module
-        $('#fade').innerfade({
-            timeout: 3000,
-            type: 'sequence',
-            speed: 2000,
-            containerheight: '440px'
-        });
+        if ( typeof $.innerfade === 'function') {
+            $('#fade').innerfade({
+                timeout: 3000,
+                type: 'sequence',
+                speed: 2000,
+                containerheight: '440px'
+            });
+        }
 
         // blog comments
         $('#formOpener').toggle(function(e){
