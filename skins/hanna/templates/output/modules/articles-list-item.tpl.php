@@ -21,24 +21,30 @@
 	else
 	    $img = '';
 
-	if ($content['date'] AND $content['time'])
-		$date = date("d.m.Y", $content['date']).' '.$content['time'];
-	else
-	    $date = date("d.m.Y H:i", $article['created']);
+	if ($content['date'] AND $content['time']) {
+	    $pubDate = date("Y-m-d", $content['date']);
+	    $date    = date("d.m.Y", $content['date']).' '.$content['time'];
+	} else {
+	    $pubDate = date("Y-m-d", $article['created']);
+	    $date    = date("d.m.Y H:i", $article['created']);
+	}
 
 	$author = $textlist->_getOwner( $article['owner'] );
 ?>
-<div class="blog-item clear<?php echo $class?>">
-	<h2><a href="<?php echo $link ?>"><?php echo $content['title'] ?></a></h2>
+<article class="blog-item clear<?php echo $class?>">
+	<header>
+		<h2><a href="<?php echo $link ?>"><?php echo $content['title'] ?></a></h2>
+	</header>
 	<p class="date">
-		<span class="author"><?php echo $author['I_name'].' '.$author['I_surname'] ?></span> | <?php echo $date; ?>
+		<span class="author"><?php echo $author['I_name'].' '.$author['I_surname'] ?></span> | <time datetime="<?php echo $pubDate;?>" pubdate="pubdate"><?php echo $date; ?></time>
 	</p>
 	<?php echo ($content['embed'] ? '<div class="embed">'.$content['embed'].'</div>' : $img); ?>
 	<div class="text clear-block">
 		<p><?php echo $content['lead'] ?></p>
 	</div>
-	<span class="tags"><strong>Views</strong>: <?php echo $textlist->getViewsCount( $article['id'] ) ?></span> |
-	<span class="tags"><strong>Comments</strong>: <a href=""><?php echo $textlist->getCommentsCount( $article['id'] ) ?></a></span> |
-	<?php echo $textlist->generateTagLinks( $content['tags'] ) ?>
-	<div class="clear-block"></div>
-</div>
+	<footer>
+		<span class="tags"><strong>Views</strong>: <?php echo $textlist->getViewsCount( $article['id'] ) ?></span> |
+		<span class="tags"><strong>Comments</strong>: <a href=""><?php echo $textlist->getCommentsCount( $article['id'] ) ?></a></span> |
+		<?php echo $textlist->generateTagLinks( $content['tags'] ) ?>
+	</footer>
+</article>

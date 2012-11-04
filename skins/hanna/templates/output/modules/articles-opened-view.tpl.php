@@ -22,10 +22,13 @@ else
 		$img = WBG_HELPER::insertImage( $content['lead_img'],' class="f-left"', null, 1 );
 }
 
-if ($content['date'] AND $content['time'])
-	$date = date("d.m.Y", $content['date']).' '.$content['time'];
-else
-    $date = date("d.m.Y H:i", $article['created']);
+if ($content['date'] AND $content['time']) {
+    $pubDate = date("Y-m-d", $content['date']);
+    $date    = date("d.m.Y", $content['date']).' '.$content['time'];
+} else {
+    $pubDate = date("Y-m-d", $article['created']);
+    $date    = date("d.m.Y H:i", $article['created']);
+}
 
 $author = $textlist->_getOwner( $article['owner'] );
 
@@ -34,17 +37,18 @@ if ( !isset( $templateVars['no_back_button'] ) )
 ?>
 <article id="blog-page">
     <div class="blog-item opened">
-    	<h1><?php echo $content['title']; ?></h1>
+    	<header><h1><?php echo $content['title']; ?></h1></header>
     	<p class="date">
-    		<span class="author"><?php echo $author['I_name'].' '.$author['I_surname'] ?></span> | <?php echo $date; ?>
+    		<span class="author"><?php echo $author['I_name'].' '.$author['I_surname'] ?></span> | <time datetime="<?php echo $pubDate;?>" pubdate="pubdate"><?php echo $date; ?></time>
     	</p>
     	<?php echo ( $content['embed'] ? '<div class="embed">'.$content['embed'].'</div>' : $img); ?>
     	<div class="text clear-block">
     		<p><?php echo $content['text']; ?></p>
     	</div>
-    	<?php echo $textlist->generateTagLinks( $content['tags'] ); ?>
-    	<?php echo $back; ?>
-    	<div class="clear-block"></div>
+        <footer class="clear">
+        	<?php echo $textlist->generateTagLinks( $content['tags'] ); ?>
+        	<?php echo $back; ?>
+        </footer>
     	<?php echo $textlist->showComments( $article['id'] ); ?>
     </div>
 </article>

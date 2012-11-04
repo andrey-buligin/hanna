@@ -5,7 +5,7 @@
 	$articles   = $textlist->getList();
 ?>
 <div id="blog-page">
-	<h1><?php echo $textlist->getPageTitle(); ?></h1>
+	<header><h1><?php echo $textlist->getPageTitle(); ?></h1></header>
 	<?php if ( is_array($articles) ):?>
 	<?php
 			foreach ($articles as $articleKey => $article)
