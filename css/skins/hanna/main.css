@@ -647,8 +647,11 @@ form textarea.error {
   padding: 0 15px;
 }
 #postedComments .item:last-child {
-  margin: none;
+  margin-bottom: 0;
   border: none;
+}
+#postedComments .item:last-child .commentText {
+  margin-bottom: 0;
 }
 #postedComments .item .author {
   font-size: 1em;

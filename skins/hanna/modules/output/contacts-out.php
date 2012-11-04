@@ -1,5 +1,5 @@
 <article class="clearfix">
-<h1 class="pageTitle"><?php echo WBG_HELPER::insertCatTitle() ?></h1>
+<header><h1><?php echo WBG_HELPER::insertCatTitle() ?></h1></header>
 <aside id="googleMap">
 	<iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps/ms?msid=215570461820176519445.0004c8e6979dfcde0ec90&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=51.529572,-0.045319&amp;spn=0.018689,0.030041&amp;z=14&amp;iwloc=0004c8e69b330947af160&amp;output=embed"></iframe><br />
 	<div><a target="_blank" href="https://maps.google.co.uk/maps/ms?msid=215570461820176519445.0004c8e6979dfcde0ec90&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=51.529572,-0.045319&amp;spn=0.018689,0.030041&amp;z=14&amp;iwloc=0004c8e69b330947af160&amp;source=embed">View in a larger map</a></div>
