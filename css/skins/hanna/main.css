@@ -250,6 +250,7 @@ a:hover {
 #content table td.tableHeader {
   text-align: center;
   font-weight: bold;
+  color: #576f3d;
 }
 #content table tr:first-child td,
 #content table tr:first-child th {
