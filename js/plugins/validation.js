@@ -79,7 +79,7 @@
 
 		function validateText(el, elHelper) {
 			var val = el.val(),
-				filter = /^[a-zA-Z_.-\s]+$/;
+				filter = /^[a-zA-Z_.\-\s]+$/;
 
 			if ( val.length < 3 || !filter.test(val) ) {
 				el.addClass("error");

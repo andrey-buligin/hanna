@@ -97,7 +97,7 @@
 			comment: {
 				type: 'textarea',
 				selector: '#message',
-				helperSelector: ''
+				helperSelector: '#message'
 			}
 		});
 	});
