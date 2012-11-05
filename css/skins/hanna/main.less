@@ -5,7 +5,44 @@
 @dark-yellow: #8B6A12;
 @yellow: #D0AB47;
 @error-helper-color: #e46c6e;
+@table-bg-color: rgb(249, 237, 215);
+@green: #576F3D;
 
+/************************************************************************************/
+/* WBG EDITOR */
+
+	.yellow {
+		color: @yellow;
+	}
+
+	.darkYellow {
+		color: @dark-yellow;
+	}
+
+	.green {
+		color: @green;
+	}
+
+	.black {
+		color: #000;
+	}
+
+	.header1 {
+		font-size: 1.7em;
+		color: @dark-yellow;
+	}
+
+	.header2 {
+		font-size: 1.5em;
+		color: @dark-yellow;
+	}
+
+	.header3 {
+		font-size: 1.3em;
+		color: @dark-yellow;
+	}
+
+/* WBG EDITOR */
 /************************************************************************************/
 /* COMMON */
 
@@ -67,7 +104,7 @@
 		a {
 			font-size: 6em;
 			color: @dark-yellow;
-			color: #576F3D;
+			color: @green;
 			font-weight: bold;
 			font-family: 'Rochester', Georgia;
 
@@ -122,6 +159,36 @@
 
 		p {
 
+		}
+
+		ul {
+			list-style: disc;
+			padding-left: 1.5em;
+
+			li {
+				margin-left: 1.25em;
+			}
+		}
+
+		table {
+			border: 1px solid @dark-yellow;
+			border-collapse: collapse;
+			background: @table-bg-color;
+
+			td,
+			th {
+				text-align: left;
+				padding: 3px 5px;
+				border: 1px solid @dark-yellow;
+			}
+
+			th,
+			td.tableHeader {
+				text-align: center;
+				font-weight: bold;
+				color: @green;
+				text-shadow: 0px 1px rgb(0,0,0,0.1);
+			}
 		}
 	}
 
