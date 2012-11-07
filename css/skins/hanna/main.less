@@ -344,6 +344,68 @@
 
 /* /* innerFade */
 /************************************************************************************/
+/* Subcategories page with animating circles */
+
+	.ch-grid {
+		margin: 20px 0 0;
+	    padding: 0;
+	    text-align: center;
+	    width: 100%;
+
+		li.ch-item {
+			display: inline-block;
+		    height: 220px;
+		    margin: 20px;
+		    width: 220px;
+		    list-style: none;
+    		position: relative;
+    		perspective: 900px;
+		    transform-style: preserve-3d;
+		    .border-box();
+		    .border-radius(50%);
+
+			div {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				transform-origin: 50% 0;
+			    .transition(all 0.4s ease-in-out 0s);
+			    .border-box();
+			    .border-radius(50%);
+			}
+
+			.ch-info-front {
+				background-size: 220px 220px;
+				.inner-shadow(0 0 0 16px rgba(0, 0, 0, 0.3));
+			}
+
+			.ch-info-back {
+				.opacity(0);
+				background: #000;
+				.transform(translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg));
+
+				h3 {
+					//border-bottom: 1px solid yellow;
+				}
+			}
+
+			&:hover {
+
+				.ch-info-front {
+					.transform(translate3d(0px, 280px, 0px) rotate3d(1, 0, 0, -90deg));
+				}
+				.ch-info-back {
+					//.translate3d(@x,@y,@z);
+					.transform(rotate3d(1, 0, 0, 0deg));
+					.opacity(1);
+				}
+			}
+
+		}
+	}
+
+/* Subcategories page with animating circles */
+/************************************************************************************/
 /* Navigation */
 
 	.menu {

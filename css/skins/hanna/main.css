@@ -404,6 +404,88 @@ ul {
 }
 /* /* innerFade */
 /************************************************************************************/
+/* Subcategories page with animating circles */
+.ch-grid {
+  margin: 20px 0 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+.ch-grid li.ch-item {
+  display: inline-block;
+  height: 220px;
+  margin: 20px;
+  width: 220px;
+  list-style: none;
+  position: relative;
+  perspective: 900px;
+  transform-style: preserve-3d;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+.ch-grid li.ch-item div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 0;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  -o-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+.ch-grid li.ch-item .ch-info-front {
+  background-size: 220px 220px;
+  -webkit-box-shadow: inset 0 0 0 16px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 0 16px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 0 16px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 0 16px rgba(0, 0, 0, 0.3), '';
+  -moz-box-shadow: inset 0 0 0 16px rgba(0, 0, 0, 0.3), '';
+  box-shadow: inset 0 0 0 16px rgba(0, 0, 0, 0.3), '';
+}
+.ch-grid li.ch-item .ch-info-back {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  background: #000;
+  -webkit-transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
+  -moz-transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
+  -ms-transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
+  -o-transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
+  transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
+}
+.ch-grid li.ch-item:hover .ch-info-front {
+  -webkit-transform: translate3d(0px, 280px, 0px) rotate3d(1, 0, 0, -90deg);
+  -moz-transform: translate3d(0px, 280px, 0px) rotate3d(1, 0, 0, -90deg);
+  -ms-transform: translate3d(0px, 280px, 0px) rotate3d(1, 0, 0, -90deg);
+  -o-transform: translate3d(0px, 280px, 0px) rotate3d(1, 0, 0, -90deg);
+  transform: translate3d(0px, 280px, 0px) rotate3d(1, 0, 0, -90deg);
+}
+.ch-grid li.ch-item:hover .ch-info-back {
+  -webkit-transform: rotate3d(1, 0, 0, 0deg);
+  -moz-transform: rotate3d(1, 0, 0, 0deg);
+  -ms-transform: rotate3d(1, 0, 0, 0deg);
+  -o-transform: rotate3d(1, 0, 0, 0deg);
+  transform: rotate3d(1, 0, 0, 0deg);
+  opacity: 1;
+  filter: alpha(opacity=0);
+}
+/* Subcategories page with animating circles */
+/************************************************************************************/
 /* Navigation */
 .menu {
   padding: 20px 0;
