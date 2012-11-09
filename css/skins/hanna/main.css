@@ -198,7 +198,6 @@ a:hover {
   margin-right: 20px;
   height: 100px;
   width: 100px;
-  border: 4px solid #A8872D;
   background: url('/images/skins/hanna/building/beautybyhanna.jpg') 0px 0 no-repeat;
   background-size: 100px 100px;
   -webkit-transition: all 0.4s ease-in-out 0s;
@@ -217,6 +216,12 @@ a:hover {
   -webkit-box-shadow: inset 0px 0px 15px rgba(208, 171, 71, 0.9), '';
   -moz-box-shadow: inset 0px 0px 15px rgba(208, 171, 71, 0.9), '';
   box-shadow: inset 0px 0px 15px rgba(208, 171, 71, 0.9), '';
+  -webkit-box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.3), '';
+  -moz-box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.3), '';
+  box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.3), '';
 }
 #logo a .circle .inner {
   font-family: Georgia, Serif;
@@ -227,7 +232,7 @@ a:hover {
   background: rgba(208, 171, 71, 0.8);
   height: inherit;
   width: inherit;
-  padding-top: 26%;
+  padding-top: 40%;
   position: absolute;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
