@@ -200,7 +200,7 @@ class comments {
 		$x 	  = 0;
 
 		if ( $id && $table ) {
-			$conditions = "AND doc_id = '".self::$doc_id."' AND sql_table_name='".$table;
+			$conditions = "AND doc_id = '".self::$doc_id."' AND sql_table_name='".$table."'";
 		} else {
 			$conditions = "";
 		}
