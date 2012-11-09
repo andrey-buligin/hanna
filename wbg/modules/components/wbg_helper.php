@@ -2,7 +2,7 @@
 
 class WBG_HELPER {
 
-	/*****************************************************************************************/	
+	/*****************************************************************************************/
 	/**
 	 * Funkcia dostajet vse kategorii v wbg i returnit array el[parent_id] = spisok el s takimze parentom
 	 *
@@ -16,7 +16,7 @@ class WBG_HELPER {
 		}
 		return $wbgCats;
 	}
-	
+
 	/**
 	 * Funkcija vozvrawajet spisok detej konkretnoi wbg kategorii
 	 *
@@ -28,18 +28,18 @@ class WBG_HELPER {
 	 */
 	function getCatChilds($id, $getActive = true, $getAllChilds = false, $getOnlyCount = false){
 		global $web;
-		
+
 		if ($getActive) {
 			$condition = ' AND active=1 AND enabled=1';
 		} else {
 			$condition = '';
 		}
-		
+
 		if ($getOnlyCount) {
 			$sqlStr = "SELECT count(*) FROM wbg_tree_categories WHERE parent_id=".$id." ".$condition;
 			return @mysql_result(mysql_query($sqlStr),0,0);
 		}
-		
+
 		$childs  = array();
 		$sqlStr  = "SELECT * FROM wbg_tree_categories WHERE parent_id=".$id." ".$condition." ORDER BY sort_id";
 		$sql_res = mysql_query($sqlStr);
@@ -51,7 +51,7 @@ class WBG_HELPER {
 		}
 		return $childs;
 	}
-	
+
 	/**
 	 * Funkcija dostajet danie o konkretnom elemente v wbg kategorii
 	 *
@@ -61,7 +61,7 @@ class WBG_HELPER {
 	function getCatData($id){
 		return @mysql_fetch_assoc(mysql_query("SELECT * FROM wbg_tree_categories WHERE id=".$id));
 	}
-	
+
 	function catPropertyExists(&$params, $field){
 		if (!is_array($params)) $params = @unserialize($params);
 		if (!empty($params[$field])){
@@ -69,27 +69,35 @@ class WBG_HELPER {
 		}
 		return false;
 	}
-	
+
+	function getProperty(&$params, $field){
+		if (!is_array($params)) $params = @unserialize($params);
+		if (!empty($params[$field])){
+			return $params[$field];
+		}
+		return false;
+	}
+
 	function getCatPropImage($imageParams = ''){
 		global $web;
-		
+
 		$cat   = $web->active_category;
 		$props = @unserialize($web->category_data[$cat]['properties']);
 		if (!empty($props['foto'])){
 			return self::insertImage($props['foto'], $imageParams).'<br class="spacer" />';
 		}
 	}
-	
-	/*****************************************************************************************/	
+
+	/*****************************************************************************************/
 	/**
 	 * Function is used to transfer capslock tags to smallcaps..adds ending tag "/" to image i brake html elements, inserts "" in tag params
 	 *
 	 * @param string $string input HTML
 	 */
 	function transferToXHTML($string){
-		
+
 		//echo '<!--'.$string.'-->';
-		$upcasedTags 	= array("/<(\/?)A(.*?)>/", "/<(\/?)P>/", "/<(\/?)SPAN>/", "/<BR(\/?)>/", "/<(\/?)DIV>/", "/<(\/?)B>/", 
+		$upcasedTags 	= array("/<(\/?)A(.*?)>/", "/<(\/?)P>/", "/<(\/?)SPAN>/", "/<BR(\/?)>/", "/<(\/?)DIV>/", "/<(\/?)B>/",
 								"/<(\/?)U>/", "/<(\/*)I>/", "/<(\/*)FONT>/", "/<(\/*)CENTER>/", "/<(\/*)STRONG>/",
 								"/<(\/?)TD>/", "/<(\/?)TH>/", "/<(\/?)TR>/", "/<(\/?)TBODY>/", "/<(\/?)TABLE>/", "/<(\/?)LI>/", "/<(\/?)UL>/", "/<(\/?)OL>/");
 								//td,tr,table,TBODY
@@ -97,24 +105,24 @@ class WBG_HELPER {
 								"<$1td>", "<$1th>", "<$1tr>", "<$1tbody>", "<$1table>", "<$1li>", "<$1ul>", "<$1ol>");
 		$string = preg_replace($upcasedTags, $downcasedTags, $string);
 		$string = str_replace("<br>", "<br/>", $string);
-		
+
 		//replacim param->value vnutri tagov tip <a href=zopa> na ix zhe tok s zakritimi skobkami <a href="zopa">
 		$string = preg_replace("/<(.*?) ([a-zA-Z0-9_]+)=([a-zA-Z0-9_]+)(.*?)\>/", "<$1 $2=\"$3\"$4>", $string);
 		$string = preg_replace("/<(.*?) ([a-zA-Z0-9_]+)=([a-zA-Z0-9_]+)(.*?)\>/", "<$1 $2=\"$3\"$4>", $string);
-		
+
 		//class=wysiwyg_link
-		
+
 		//images regulation
 		$string = preg_replace("/<img ([^<]+)\">/", "<img $1\"/>", $string);
 		$string = preg_replace(array('/vspace="[0-9]*"/', '/hspace="[0-9]*"/', '/align=""/'), "", $string);
 		$string = preg_replace_callback('/<img (.*?)\/>/', 'imgAttributes', $string);
-		
+
 		$string = preg_replace('/target="_self"/', "", $string);
 		$string = preg_replace('/target="_blank"/', 'rel="external"', $string);
 		return  $string;
 	}
-		
-	/*****************************************************************************************/	
+
+	/*****************************************************************************************/
 	/**
 	 * Funkcija vstavki imaga pod XHTML format
 	 *
@@ -131,7 +139,7 @@ class WBG_HELPER {
 
 		if ( !is_array($image) )
 			$image = unserialize($image);
-			
+
 		if ($resize AND @$image['resized'][$resize]){
 			return '<img '.$style.' src="images/'.$image['resized'][$resize].'" alt="'.$image['alt'].'" title="'.$image['alt'].'"/>';
 		}
@@ -139,7 +147,7 @@ class WBG_HELPER {
 			return '<img '.$style.' src="images/'.$image['src'].'" alt="'.$image['alt'].'" title="'.$image['alt'].'"/>';
 		}
 	}
-		
+
 	/**
 	 * Funkcija insertit JS cod pod XHTML standart
 	 *
@@ -155,7 +163,7 @@ class WBG_HELPER {
 					</script>';
 		}
 	}
-	
+
 	/**
 	 * Funkcija vstavlajet link s vnutrenim html`om na popup
 	 *
@@ -168,11 +176,11 @@ class WBG_HELPER {
 	 */
 	function insertPopup($popupSrc, $innerHtml, $style = '', $popupWidth = '600', $popupHeight = '600'){
 		global $_CFG;
-		
+
 		$onClick = "open('".$popupSrc."', '', ' resizable=yes, scrollbars=yes, width=".$popupWidth.", height=".$popupHeight."');return false;";
 		return '<a href="#" '.$style.' onclick="'.$onClick.'">'.$innerHtml.'</a>';
 	}
-	
+
 	/**
 	 * Funkcija dostajet title categorii iz WEB var`a
 	 *
@@ -184,7 +192,7 @@ class WBG_HELPER {
 		if (!$id) $id = $web->active_category;
 		return $web->category_data[$id]['title'];
 	}
-	
+
 	/**
 	 * Funkcija lozhit nekij html v nekij tag s atributami
 	 *
@@ -197,8 +205,8 @@ class WBG_HELPER {
 		if (!$str OR !$tag) return ;
 		return '<'.$tag.' '.$attribs.'>'.$str.'</'.$tag.'>';
 	}
-	
-	/*****************************************************************************************/	
+
+	/*****************************************************************************************/
 	/**
 	 * Funkcija url-encodit vse zna4enija parametrov peredavaemix v url`e
 	 *
@@ -206,7 +214,7 @@ class WBG_HELPER {
 	 * @return string
 	 */
 	function SmartUrlEncode($url){
-		
+
 	    if (strpos($url, '=') === false){
 	        return $url;
 	    } else {
@@ -221,7 +229,7 @@ class WBG_HELPER {
 			return $tmpUrl.implode("&amp;", $qryOut);
 	    }
 	}
-	
+
 	 /**
 	 * Funkcija vozvrawaet normalnij otparwenij WBG_link jesli evo nada vernutj bez RETURN_FROM_MODULE
 	 * ( jest problemi pri generacii linka na document- vstavlaetsa ins_link kod)
@@ -230,7 +238,7 @@ class WBG_HELPER {
 	 * @return string link
 	 */
 	function getLink($link) {
-		
+
 		$link = str_replace("ins_crosslink", "WBG::crosslink", $link);
 		if (strpos($link,'WBG::crosslink')) {
 			$orig = array("<?php", "?>", "echo");
@@ -246,8 +254,8 @@ class WBG_HELPER {
 		}
 		return self::SmartUrlEncode($link);
 	}
-	
-	/*****************************************************************************************/	
+
+	/*****************************************************************************************/
 	/**
 	 * Funkcija generacii tropi
 	 *
@@ -256,7 +264,7 @@ class WBG_HELPER {
 	 */
 	function breadCrumbs($curObject = null){
 		global $web;
-		
+
 		$out = '';
 		foreach ($web->active_tree as $key => $value) {
 			$out[] = '<a href="'.SmartUrlEncode(WBG::crosslink($value)).'">'.$web->category_data[$value]['title'].'</a>';
@@ -268,31 +276,31 @@ class WBG_HELPER {
 			return '<div id="breadcrumbs">'.implode(" → ", $out).'</div>';
 		}
 	}
-	
-	/*****************************************************************************************/	
+
+	/*****************************************************************************************/
 	/**
-	 * Funkcija generit page title i lozhit evo v globalnij var $page_title 
+	 * Funkcija generit page title i lozhit evo v globalnij var $page_title
 	 *
 	 */
 	function generatePageTitle(){
 		global $web;
 		global $page_title;
-		
+
 		$docTitle = self::getDocumentTitle();
-		if ($docTitle) 
+		if ($docTitle)
 		{
 			$page_title = $docTitle;
 			return;
 		}
-		
+
 		if ( isset( $_GET['tag'] ) )
 		{
 		    $page_title = ' Search results for tag "'.htmlspecialchars( $_GET['tag'] ).'"';
 			return;
 		}
-		
+
 		$propertiesCatTitle = @WBG::category("current", "inner", "title", null, null, true, false);
-		if (trim($propertiesCatTitle)) 
+		if (trim($propertiesCatTitle))
 		{
 			$page_title = $propertiesCatTitle;
 		}
@@ -305,14 +313,14 @@ class WBG_HELPER {
 			$page_title = WBG::message('page_title', 0, 1).' - '.implode(" . ", $out);
 		}
 	}
-	
+
 	/**
 	 * Function return document/article title if we r currently viewing it
 	 */
 	function getDocumentTitle()
 	{
 		global $web;
-		
+
 		$docTitle = '';
 		if (isset($_GET['prod'])){
 			//produkt
@@ -331,7 +339,7 @@ class WBG_HELPER {
 		return $docTitle;
 	}
 	/*****************************************************************************************/
-	
+
 	/**
 	 * Funkcja generirujet meta description and keywrods tagi.
 	 * @param unknown_type $type
@@ -345,15 +353,15 @@ class WBG_HELPER {
 		}
 		$metaText	= '';
 		$docTitle = self::getDocumentTitle();
-		
-		if ($docTitle) 
+
+		if ($docTitle)
 		{
 			$metaText = $docTitle;
 		}
-		else 
+		else
 		{
 			$propertiesMeta = WBG::category("current", "inner", $type, null, null, true, false);
-			if ( trim($propertiesMeta) ) 
+			if ( trim($propertiesMeta) )
 			{
 				$metaText = $propertiesMeta;
 				$appendText = '';
@@ -361,20 +369,20 @@ class WBG_HELPER {
 		}
 		return $appendText.$metaText;
 	}
-	
+
 	/*****************************************************************************************/
-	
+
 	function getTarget($target){
 		if ($target == '_blank') {
 			return 'rel="external"';
 		}
 	}
-	
+
 	/**
 	 * Function shows error message. Used in case if something on page went wrong.
 	 */
 	function showErrorText( $msg = '' ) {
-		
+
 		if (!$msg)
 			$msg = '<p>Sorry but requested content has not been found. <br/>
 					Possible reasons for that:
@@ -389,7 +397,7 @@ class WBG_HELPER {
 }
 
 	function imgAttributes($matches){
-		
+
 		$return = $matches[1];
 		if (!preg_match('/alt="/', $matches[1])) {
 			$return .= ' alt=""';
