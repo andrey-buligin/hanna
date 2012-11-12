@@ -14,7 +14,7 @@
     		}
 
     		$return_from_module = WBG_HELPER::transferToXHTML('
-    			<article id="onetextContent">
+    			<article id="onetextContent" class="clear">
 					<header><h1>'.$data['title'].'</h1></header>
 					'.$img.'
 					<div class="text">'.$data['text'].'</div>
