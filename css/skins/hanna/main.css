@@ -473,6 +473,18 @@ ul {
   -o-transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
   transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
 }
+.ch-grid li.ch-item .ch-info-back a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+.ch-grid li.ch-item .ch-info-back h3 {
+  padding: 38% 10% 0 10%;
+}
+.ch-grid li.ch-item .ch-info-back p {
+  color: #5e5d5d;
+}
 .ch-grid li.ch-item:hover .ch-info-front {
   opacity: 0;
   filter: alpha(opacity=0);

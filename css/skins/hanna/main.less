@@ -3,6 +3,7 @@
 @img-url: "images/skins/hanna/building/";
 @link-color: #8B6A12;
 @dark-yellow: #8B6A12;
+@dark-grey: #5e5d5d;
 @yellow: #D0AB47;
 @error-helper-color: #e46c6e;
 @table-bg-color: rgb(249, 237, 215);
@@ -393,8 +394,20 @@
 				background: #000;
 				.transform(translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg));
 
+				a {
+					display: block;
+					height: 100%;
+					width: 100%;
+					text-decoration: none;
+				}
+
 				h3 {
+					padding: 38% 10% 0 10%;
 					//border-bottom: 1px solid yellow;
+				}
+
+				p {
+					color: @dark-grey;
 				}
 			}
 

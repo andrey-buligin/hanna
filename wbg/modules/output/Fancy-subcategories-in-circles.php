@@ -27,8 +27,10 @@
 				<div class="ch-info"></div>
 				<div class="ch-info-front" style="background-image: url('images/<?php echo $frontImageSrc;?>')"></div>
 				<div class="ch-info-back">
-					<h3><a href=""><?php echo $title; ?></a></h3>
-					<p><?php echo $text; ?></p>
+					<a href="<?php echo WBG::crosslink($cat['id']);?>">
+						<h3><?php echo $title; ?></h3>
+						<p><?php echo $text; ?></p>
+					</a>
 				</div>
 			</li>
 			<?php endforeach; ?>
