@@ -32,13 +32,20 @@
 	{
     	//obrabotka URL dlja
     	$catalogTitle = 'portfolio';
-    	if ( preg_match('/[site\/]+[lat|eng|rus]+\/'.$catalogTitle.'\/(.+?)/', @$_SERVER['REDIRECT_URL']) OR
-    	     preg_match('/[site\/]+[lat|eng|rus]+\/(.+?)-B[0-9]+\.html/', @$_SERVER['REDIRECT_URL']))
+
+        if ( preg_match('/[site\/]+[lat|eng|rus]+\/'.$catalogTitle.'\/(.+?)/', @$_SERVER['REDIRECT_URL']) OR
+    	     preg_match('/[site\/]+[lat|eng|rus]+\/(.+?)-B[0-9]+\.html/', @$_SERVER['REDIRECT_URL']) OR
+             preg_match('/[site\/]+[lat|eng|rus]+\/'.$catalogTitle.'-C'.$_CFG['portfolio_folder_id'].'/', @$_SERVER['REDIRECT_URL']))
     	{
     	    $catsUrl = preg_replace('/[site\/]+[lat|eng|rus]+\/'.$catalogTitle.'/', '', $_SERVER['REDIRECT_URL']);
     		$cats = explode("/", $catsUrl);
 
-        	if ( !preg_match('/[site\/]+[lat|eng|rus]+\/(.+?)-B[0-9]+\.html/', @$_SERVER['REDIRECT_URL']) )
+            if ( preg_match('/[site\/]+[lat|eng|rus]+\/'.$catalogTitle.'-C'.$_CFG['portfolio_folder_id'].'/', @$_SERVER['REDIRECT_URL']) )
+            {
+                $lastCat = $_CFG['portfolio_folder_id'];
+                $cats = Array();
+            }
+        	elseif ( !preg_match('/[site\/]+[lat|eng|rus]+\/(.+?)-B[0-9]+\.html/', @$_SERVER['REDIRECT_URL']) )
     		{
     			if (preg_match("/-P([0-9]+).html/", $catsUrl, $objId)) {
     				//bil ukazan object
@@ -55,15 +62,15 @@
                         }
     				}
     			}
-    		} else {
-    			if (preg_match("/-B([0-9]+).html/", $catsUrl, $objId)) {
-    				$blogId = $objId[1];
-    				if ($object = @mysql_fetch_assoc( mysql_query("SELECT * FROM _mod_textlist WHERE id=".$blogId)) )
-    				{
-    					$lastCat = $object['category_id'];
-    					$_GET['doc'] = $object['id'];
-    				}
-    			}
+    		}
+            elseif (preg_match("/-B([0-9]+).html/", $catsUrl, $objId))
+            {
+				$blogId = $objId[1];
+				if ($object = @mysql_fetch_assoc( mysql_query("SELECT * FROM _mod_textlist WHERE id=".$blogId)) )
+				{
+					$lastCat = $object['category_id'];
+					$_GET['doc'] = $object['id'];
+				}
     		}
 
     		if (!session_start()) session_start();

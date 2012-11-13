@@ -53,7 +53,7 @@
 			    // checking if current category "map to portfolio gallery".
     			if ( ($arr['output_template'] == 0) AND ($arr['input_module'] == 0) AND ($arr['output_module'] == $_CFG['portfolio_output_module_id']) ) {
     			     $subNavRootId = $_CFG['portfolio_folder_id'];
-    			     $link = '#';
+    			     $link = $UrlManager->getWbgCategoryUrl( $subNavRootId );
     			} else {
     			     $subNavRootId = $arr['id'];
     			}
