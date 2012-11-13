@@ -328,12 +328,12 @@ class WBG_HELPER {
 		} elseif (isset($_GET['obj_id'])){
 			//projekt
 			$docTitle = @mysql_result(mysql_query("SELECT title_".$web->lang_prefix." FROM _mod_portfolio WHERE id=".$_GET['obj_id']),0,0);
-			if ($docTitle) $docTitle = 'Andrey Buligin - Portfolio - '.$docTitle;
+			if ($docTitle) $docTitle = WBG::message('page_title', 0, 1).' - Portfolio - '.$docTitle;
 		} elseif (isset($_GET['doc'])){
 			//otkritij dokument
 			$props = @unserialize(mysql_result(mysql_query("SELECT content FROM _mod_textlist WHERE id=".$_GET['doc']),0,0));
 			if ($props['title']){
-				$docTitle = 'Andrey Buligin - '.$props['title'];
+				$docTitle = WBG::message('page_title', 0, 1).' - '.$props['title'];
 			}
 		}
 		return $docTitle;
