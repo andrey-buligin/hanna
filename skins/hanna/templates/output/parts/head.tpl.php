@@ -6,8 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <!-- <meta name="viewport" content="width=device-width"> -->
 
 	<title><?php WBG::variable("page_title",1);?></title>
 	<meta name="description" content="<?php echo WBG_HELPER::generatePageMetaTag('desciption');?>" />
