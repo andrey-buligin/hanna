@@ -1,7 +1,7 @@
 <article class="clearfix">
 <header><h1><?php echo WBG_HELPER::insertCatTitle() ?></h1></header>
 <aside id="googleMap">
-	<iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps/ms?msid=215570461820176519445.0004c8e6979dfcde0ec90&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=51.529572,-0.045319&amp;spn=0.018689,0.030041&amp;z=14&amp;iwloc=0004c8e69b330947af160&amp;output=embed"></iframe><br />
+	<iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?ie=UTF8&amp;cid=9929042873503584236&amp;q=Beauty+by+Hanna+at+OMG+Hair+and+Beauty&amp;gl=GB&amp;hl=en&amp;ll=51.532059,-0.041296&amp;spn=0.006295,0.006295&amp;t=m&amp;iwloc=A&amp;output=embed"></iframe><br/>
 	<div><a target="_blank" href="https://maps.google.co.uk/maps/ms?msid=215570461820176519445.0004c8e6979dfcde0ec90&amp;msa=0&amp;ie=UTF8&amp;t=m&amp;ll=51.529572,-0.045319&amp;spn=0.018689,0.030041&amp;z=14&amp;iwloc=0004c8e69b330947af160&amp;source=embed">View in a larger map</a></div>
 	<div class="vcard">
 		<div class="org">OMG Hair And Beauty In Bow Wharf LTD</div>
