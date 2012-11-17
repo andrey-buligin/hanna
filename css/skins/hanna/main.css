@@ -105,6 +105,10 @@
   font-size: 1.3em;
   color: #8b6a12;
 }
+.floatClear {
+  clear: both;
+  display: block;
+}
 /* WBG EDITOR */
 /************************************************************************************/
 /* Mixins */
@@ -302,7 +306,7 @@ a:hover {
 }
 #content table.wbgTable,
 #content table.wbg_Table {
-  background: rgba(249, 237, 215, 0.7);
+  background: rgba(249, 237, 215, 0.4);
   border: 1px solid #8b6a12;
 }
 #content table td,
