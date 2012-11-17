@@ -996,10 +996,6 @@ form textarea.error {
   opacity: 1;
   filter: alpha(opacity=0);
 }
-.portfolioContent .addthis_toolbox {
-  margin-right: 15px;
-  margin-top: -16px;
-}
 /* AddThis */
 /************************************************************************************/
 /* Gallery overrides */
@@ -1021,7 +1017,7 @@ form textarea.error {
   box-shadow: 0 0 5px #999999;
 }
 #content .rg-gallery {
-  margin: 20px auto 0 auto;
+  margin: 35px auto 0 auto;
 }
 #content .rg-image-pos,
 #content a.rg-image-slideshow {
