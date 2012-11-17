@@ -428,6 +428,9 @@ ul {
 /* /* innerFade */
 /************************************************************************************/
 /* Subcategories page with animating circles */
+#content ul.ch-grid {
+  padding: 0;
+}
 .ch-grid {
   margin: 20px 0 0;
   padding: 0;
