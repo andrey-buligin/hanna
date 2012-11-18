@@ -405,7 +405,9 @@ class TextListOut
 		function showComments( $docId )
 		{
 			comments::init( $docId, self::$TABLE);
-			return comments::show_form( $docId ).
+			return '<div id="formContainer">'.
+						comments::show_form( $docId ).
+					'</div>'.
 				   comments::showFrontEndValidation().
 				   comments::show_comments( $docId, self::$TABLE );
 		}

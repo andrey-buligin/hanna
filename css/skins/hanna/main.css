@@ -907,11 +907,14 @@ form textarea.error {
   color: #8b6a12;
   margin: 0 0 0.5em 0;
 }
-#writeComment {
-  margin-top: 1em;
-  margin-bottom: 2em;
+#formContainer {
+  border-bottom: 1px solid #d0ab47;
 }
-#writeComment #formOpener {
+#formContainer #writeComment {
+  margin-top: 1em;
+  padding-bottom: 2em;
+}
+#formContainer #writeComment #formOpener {
   font-size: 1.2em;
   color: #5e5d5d;
   text-shadow: 0 1px #fff;
@@ -933,7 +936,7 @@ form textarea.error {
   background-image: linear-gradient(bottom, #d0d0d0 49%, #d9d9d9 50%, #eaeaea 100%, #eaeaea 100%);
   float: none;
 }
-#writeComment #formOpener:hover {
+#formContainer #writeComment #formOpener:hover {
   color: #5e5d5d;
   text-shadow: 0 1px #b3b3b3;
   background-color: rgba(192, 192, 192, 0.9);
@@ -948,7 +951,6 @@ form textarea.error {
   font-family: 'Rochester', Georgia, serif;
   margin: 0 0 0.5em 0;
   padding-top: 0.5em;
-  border-top: 1px solid #d0ab47;
 }
 #postedComments .item {
   margin-bottom: 0.5em;
@@ -974,6 +976,9 @@ form textarea.error {
   font-size: 0.91em;
   color: #808080;
   text-align: right;
+}
+#reviews #postedComments .item:first-child {
+  margin-top: 0.5em;
 }
 /* Comments */
 /************************************************************************************/

@@ -90,9 +90,14 @@ class reviews extends comments
 
 	public function showReviews()
 	{
-		return self::show_form().
-			   self::showFrontEndValidation().
-			   self::show_comments( null, null, 'Reviews');
+		return '<div id="reviews">
+					<header><h1>'.WBG_HELPER::insertCatTitle().'</h1></header>'.
+					'<div id="formContainer">'.
+				 		self::show_form().
+				 	'</div>'.
+					self::showFrontEndValidation().
+				 	self::show_comments( null, null, '').
+				'</div>';
 	}
 }
 

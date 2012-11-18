@@ -220,7 +220,8 @@ class comments {
 				</article>';
 		}
 
-		if ($HTML) $HTML = '<section id="postedComments"><h4 class="commentsTitle">'.$title.'</h4>'.$HTML.'</section>';
+		$title = $title ? '<h4 class="commentsTitle">'.$title.'</h4>' : '';
+		if ($HTML) $HTML = '<section id="postedComments">'.$title.$HTML.'</section>';
 
 		return $HTML;
 	}
