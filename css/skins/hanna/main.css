@@ -309,6 +309,9 @@ a:hover {
   background: rgba(249, 237, 215, 0.4);
   border: 1px solid #8b6a12;
 }
+#content table tr.wbgFirstRow {
+  background: rgba(249, 237, 215, 0.7);
+}
 #content table td,
 #content table th {
   text-align: left;
