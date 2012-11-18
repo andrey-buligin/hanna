@@ -81,6 +81,20 @@ class WbgLayout
             $this->loadGalleryRequiredFiles( 'js' );
     }
 
+    public function loadGalleryRequiredJsFilesMin()
+    {
+        global $_CFG;
+        global $web;
+
+        if ( @$web->category_data[$web->active_category]['output_module'] == $_CFG['portfolio_output_module_id'] ) {
+            $portfolioManager = new PortfolioManager();
+
+            $currentGallery = $portfolioManager->getCurrentPorfolioGallery();
+            $minJsFile = $portfolioManager->config[$currentGallery]['JavaScriptMin'];
+            $this->loadHeaderJsFile( $minJsFile, 'js/galleries/' );
+        }
+    }
+
     protected function loadGalleryRequiredFiles( $type = 'css' )
     {
         if ( $requiredFiles = $this->getGalleryRequiredFilesList($type) )

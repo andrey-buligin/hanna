@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!-- <meta name="viewport" content="width=device-width"> -->
-    <meta name="viewport" content="width=1024px">
+    <meta name="viewport" content="width=1024">
 
 	<title><?php WBG::variable("page_title",1);?></title>
 	<meta name="description" content="<?php echo WBG_HELPER::generatePageMetaTag('desciption');?>" />
@@ -17,6 +17,7 @@
 
 	<?php global $_CFG; if ($_CFG['Environment'] == 'live') :?>
 		<link rel="stylesheet" href="css/hanna.css">
+		<?php $this->loadGalleryRequiredCssFiles(); ?>
 	<?php else: ?>
 		<link rel="stylesheet" href="css/normalize.css">
 	    <link rel="stylesheet" href="css/main.css">
@@ -28,6 +29,7 @@
 
 	<?php global $_CFG; if ($_CFG['Environment'] == 'live') :?>
 		<script type="text/javascript" src="js/hanna.min.js"></script>
+		<?php $this->loadGalleryRequiredJsFilesMin();?>
 	<?php else: ?>
 		<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 		<?php $this->loadGalleryRequiredJsFiles();?>

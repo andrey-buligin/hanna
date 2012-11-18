@@ -15,25 +15,35 @@ module.exports = function(grunt) {
       files: ['grunt.js', 'js/skins/hanna/*.js']
     },
     concat: {
-      js_custom: {
-        src: ['<banner:meta.banner>', 'js/plugins/jquery.easing.1.3.js',
-              'js/plugins/innerFade.js', 'js/galleries/horizontal_slider/jquery.imagesloaded.js',
-              'js/galleries/horizontal_slider/jquery.elastislide.js', 'js/galleries/horizontal_slider/slider.js', 
-              'js/galleries/fancy_thumbnails/*.js', 'js/skins/hanna/*.js'],
-        dest: 'js/<%= pkg.name %>_custom.js'
+      slider: {
+        src: ['js/galleries/horizontal_slider/jquery.tmpl.min.js',
+              'js/galleries/horizontal_slider/jquery.touchwipe.min.js',
+              '<config:min.slider.dest>'
+              ],
+        dest: 'js/galleries/horizontal_slider/slider.min.js'
       },
       css: {
-        src: ['<banner:meta.banner>', 'css/main.css', 'css/normalize.css', 'css/skins/hanna/*.css'],
+        src: ['<banner:meta.banner>', 'css/main.css', 'css/normalize.css', 'css/skins/hanna/main.css'],
         dest: 'css/<%= pkg.name %>.css'
       },
-      minified: {
-        src: ['js/jquery-1.8.2.min.js', 'js/galleries/horizontal_slider/jquery.tmpl.min.js','js/galleries/horizontal_slider/jquery.touchwipe.min.js', '<config:min.js_custom.dest>'], 
+      main: {
+        src: ['js/jquery-1.8.2.min.js', '<config:min.main.dest>'],
         dest: 'js/<%= pkg.name %>.min.js'
       }
     },
     min: {
-      js_custom: {
-        src: ['<banner:meta.banner>', '<config:concat.js_custom.dest>'],
+      slider: {
+        src: ['<banner:meta.banner>',
+              'js/galleries/horizontal_slider/jquery.imagesloaded.js',
+              'js/galleries/horizontal_slider/jquery.elastislide.js',
+              'js/galleries/horizontal_slider/slider.js'],
+        dest: 'js/galleries/horizontal_slider/slider_custom.min.js'
+      },
+      main: {
+        src: ['<banner:meta.banner>',
+              'js/plugins/jquery.easing.1.3.js',
+              'js/plugins/innerFade.js',
+              'js/skins/hanna/*.js'],
         dest: 'js/<%= pkg.name %>_custom.min.js'
       }
     },
@@ -59,6 +69,9 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'concat:js_custom concat:css min concat:minified');
+  // Minify Main slider files, then cocat with already minified plugins
+  // Concat css
+  // Concat main files then  minify them and concat it with minified plugins
+  grunt.registerTask('default', 'min:slider concat:slider concat:css min:main concat:main');
 
 };
