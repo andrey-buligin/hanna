@@ -482,6 +482,12 @@ ul {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
+.ch-grid li.ch-item div a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
 .ch-grid li.ch-item .ch-info-front {
   background-size: 220px 220px;
   opacity: 1;
@@ -516,12 +522,6 @@ ul {
   -ms-transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
   -o-transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
   transform: translate3d(0px, 0px, -220px) rotate3d(1, 0, 0, 90deg);
-}
-.ch-grid li.ch-item .ch-info-back a {
-  display: block;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
 }
 .ch-grid li.ch-item .ch-info-back h3 {
   font-size: 1.4em;
