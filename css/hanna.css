@@ -1617,10 +1617,7 @@ form textarea.error {
   float: right;
   font-size: 1em;
 }
-#customForm,
 #commentForm {
-  padding: 0;
-  width: 60%;
   height: 0;
   overflow: hidden;
   -webkit-transform: translate(0, 0);
@@ -1634,6 +1631,11 @@ form textarea.error {
   -moz-transition: height 0.35s;
   -o-transition: height 0.35s;
   transition: height 0.35s;
+}
+#customForm,
+#commentForm {
+  padding: 0;
+  width: 60%;
 }
 #customForm div,
 #commentForm div {
