@@ -605,6 +605,10 @@
 	#commentForm {
 		padding: 0;
 		width: 60%;
+		height: 0;
+		overflow: hidden;
+		.translateHardware(0, 0);
+		.transition(height 0.35s);
 
 		div {
 			margin-bottom: 15px;
@@ -623,6 +627,10 @@
 
 		#send {
 			.button();
+		}
+
+		&.visible {
+			height: 425px;
 		}
 
 	}

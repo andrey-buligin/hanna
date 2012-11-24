@@ -103,7 +103,7 @@ class comments {
 		return '<div id="writeComment"><a href="#" id="formOpener">'.WBG::message("write_comment",null,1).'</a></div>
 				'.(@self::$error_on_comment['banned']?'<div id="banned" style="padding:10px 3px">You are banned!</div>':'').'
 				'.$msg.'
-			<form method="post" style="'.($show?'':'display:none').'" action="#commentForm" name="" id="commentForm" class="clear">
+			<form method="post" action="#commentForm" name="" id="commentForm" class="clear">
 				<div class="input-box">
 					<label for="nameField">'.WBG::message("comments_name", null, 1).' <span>*</span></label>
 					<input class="input'.(@self::$error_on_comment['name']?' error':'').'" type="text" size="30" name="name" value="'.@$_POST['name'].'" id="nameField"/>

@@ -13,14 +13,34 @@
             });
         }
 
-        // blog comments
+        // blog comments/reviews page form
+        Modernizr.csstransitions == false;
+        if ( !Modernizr.csstransitions ) {
+            console.log('no trans')
+            $('#commentForm').hide().addClass('visible');
+
+            showForm = function() {
+                $('#commentForm').show();
+            };
+            hideForm = function() {
+                $('#commentForm').hide();
+            };
+        } else {
+            console.log('has trans')
+            showForm = function() {
+                $('#commentForm').addClass('visible');
+            };
+            hideForm = function() {
+                $('#commentForm').removeClass('visible');
+            };
+        }
         $('#formOpener').toggle(function(e){
             e.preventDefault();
-            $('#commentForm').show('normal');
+            showForm();
             $("#commentForm :input:visible:enabled:last").focus();
         }, function(e){
             e.preventDefault();
-            $('#commentForm').hide('normal');
+            hideForm();
         });
 
         //addThis
