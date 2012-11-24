@@ -3,11 +3,15 @@
 ?>
 <header><h1>Pricelist</h1></header>
 <section class="main">
+	<nav class="bb-custom-nav clear">
+		<a id="bb-nav-prev" href="#">Previous</a>
+		<a id="bb-nav-next" href="#">Next</a>
+	</nav>
 	<div class="bb-custom-wrapper">
 		<div id="bb-bookblock" class="bb-bookblock">
 			<div class="bb-item">
 				<div class="bb-custom-content">
-					<div id="folder" class="folder">
+					<div class="folder">
 						<div class="folder-cover">
 							<div class="treatment">
 								<h4>Semi-Permanent Eyelash Extensions</h4>
@@ -37,7 +41,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="folder" class="folder">
+					<div class="folder right">
 						<div class="folder-cover">
 							<div class="treatment">
 								<h4>Hot Waxing Treatments</h4>
@@ -79,19 +83,17 @@
 			<div class="bb-item">
 				<div class="bb-custom-content">
 					<div class="bb-custom-last">
-						<p>"There is no remedy for love than to love more."</p>
-						<h4>Thank you<span>&amp;</span>see you soon!</h4>
-						<p>Please contact us if you have any questions.</p>
+						<p>
+							Sometimes we provide discounts for some of the treatments.
+						</p>
+						<p>
+							Please check <a href="http://beautybyhanna.co.uk/eng/special_offers/">Special Offers section</a> for more information.
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<nav class="bb-custom-nav">
-		<a id="bb-nav-prev" href="#">Previous</a>
-		<a id="bb-nav-next" href="#">Next</a>
-	</nav>
-
 </section>
 	<script type="text/javascript" src="js/plugins/jquerypp.custom.js"></script>
         <script type="text/javascript" src="js/plugins/jquery.bookblock.js"></script>

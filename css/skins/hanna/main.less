@@ -1007,35 +1007,11 @@
 		-webkit-box-sizing: content-box;
 		-moz-box-sizing: content-box;
 		box-sizing: content-box;
-		margin: 40px auto;
+		margin: 20px auto;
 		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 	}
 
-	.bb-custom-wrapper:before,
-	.bb-custom-wrapper:after {
-		content: '';
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		background: #fff;
-		left: 0;
-		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-		border-radius: 0 0 5px 5px;
-	}
-
-	.bb-custom-wrapper:before {
-		top: 6px;
-		z-index: -2;
-		box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.3);
-	}
-
-	.bb-custom-wrapper:after {
-		top: 3px;
-		z-index: -1;
-	}
-
 	.bb-bookblock {
-		box-shadow: 0px 5px 0 rgba(0, 0, 0, 0.1);
 		width: 700px;
 		height: 500px;
 	}
@@ -1062,6 +1038,7 @@
 		height: 40px;
 		background: url("@{img-url}/nav.png") center right;
 		text-indent: -90000px;
+		outline: none;
 	}
 
 	nav.bb-custom-nav a:first-child {
@@ -1079,7 +1056,9 @@
 		.perspective(800px);
 
 		&.right {
-
+			.folder-cover {
+				.box-shadow(-1px 1px 3px rgba(0,0,0,0.2),-2px 0 3px rgba(0,0,0,0.2));
+			}
 		}
 
 		.folder-cover {
@@ -1098,16 +1077,13 @@
 			background: -o-linear-gradient(left, #f7f7f7 0%,#ffffff 12%,#ededed 100%);
 			background: -ms-linear-gradient(left, #f7f7f7 0%,#ffffff 12%,#ededed 100%);
 			background: linear-gradient(to right, #f7f7f7 0%,#ffffff 12%,#ededed 100%);
-			box-shadow:
-				inset -2px 0 5px rgba(255,255,255,0.4),
-				1px 1px 3px rgba(0,0,0,0.2),
-				2px 0 3px rgba(0,0,0,0.2);
+			.box-shadow(1px 1px 3px rgba(0,0,0,0.2), 2px 0 3px rgba(0,0,0,0.2));
 
 			.treatment {
-				padding: 0 10px;
+				padding: 5px 10px;
 
 				h4 {
-					color: @dark-grey;
+					color: @dark-yellow;
 					font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
 					font-size: 1.2em;
 					font-weight: normal;
@@ -1131,6 +1107,7 @@
 					}
 
 					dd {
+						color: @yellow;
 						float: right;
 						text-align: right;
 						display: inline-block;
@@ -1153,11 +1130,12 @@
 	}
 
 	.bb-custom-last {
+		font-size: 1.5em;
 		height: 100%;
 		padding-top: 110px;
 		box-shadow:
-			inset 0 100px 0 rgba(231, 152, 213, 0.1),
-			inset 0 -100px 0 rgba(231, 152, 213, 0.1);
+			inset 0 100px 0 rgba(84, 201, 234, 0.2),
+			inset 0 -100px 0 rgba(84, 201, 234, 0.2);//rgba(231, 152, 213, 0.1);
 	}
 
 	.bb-custom-circle {
