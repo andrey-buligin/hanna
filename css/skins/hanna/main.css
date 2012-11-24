@@ -79,6 +79,9 @@
 /* Variables */
 /* Variables */
 /************************************************************************************/
+/* Mixins */
+/* Mixins */
+/************************************************************************************/
 /************************************************************************************/
 /* WBG EDITOR */
 .yellow {
@@ -115,6 +118,9 @@
 /************************************************************************************//************************************************************************************/
 /* Variables */
 /* Variables */
+/************************************************************************************/
+/* Mixins */
+/* Mixins */
 /************************************************************************************/
 /************************************************************************************/
 /* COMMON */
@@ -1126,10 +1132,20 @@ form textarea.error {
   -o-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   -webkit-transform-origin: left center;
-  -moz-transform-origin: left center;
+  -moz-transform-origin: l left center;
   -o-transform-origin: left center;
-  -ms-transform-origin: left center;
+  -ms-transform-origin: l left center;
+  transform-origin: left center;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: l left center;
+  -o-transform-origin: left center;
+  -ms-transform-origin: l left center;
   transform-origin: left center;
 }
 .bb-page > div,
@@ -1155,9 +1171,19 @@ form textarea.error {
   -o-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .bb-page > div {
   width: 100%;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
@@ -1168,12 +1194,17 @@ form textarea.error {
   -o-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .bb-back {
   -webkit-transform: rotatey(-180deg);
   -moz-transform: rotatey(-180deg);
-  -o-transform: rotatey(-180deg);
   -ms-transform: rotatey(-180deg);
+  -o-transform: rotatey(-180deg);
   transform: rotatey(-180deg);
 }
 .bb-outer {
@@ -1198,8 +1229,8 @@ form textarea.error {
 .bb-bookblock > div.bb-page:first-child .bb-back {
   -webkit-transform: rotatey(180deg);
   -moz-transform: rotatey(180deg);
-  -o-transform: rotatey(180deg);
   -ms-transform: rotatey(180deg);
+  -o-transform: rotatey(180deg);
   transform: rotatey(180deg);
 }
 .bb-item {
@@ -1211,7 +1242,7 @@ form textarea.error {
   display: none;
   background: #fff;
 }
-/* Custom */
+/* Main styles */
 .bb-custom-wrapper {
   background: rgba(255, 255, 255, 0.1);
   width: 700px;
@@ -1222,7 +1253,6 @@ form textarea.error {
   box-sizing: content-box;
   margin: 40px auto;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  font-family: "Montserrat", Arial;
 }
 .bb-custom-wrapper:before,
 .bb-custom-wrapper:after {
@@ -1258,62 +1288,6 @@ form textarea.error {
 .bb-custom-bg {
   background-image: url("images/skins/hanna/building//faces.jpg");
 }
-.bb-custom-content h3 {
-  text-indent: 30px;
-  letter-spacing: 30px;
-  line-height: 96px;
-  padding: 20px;
-  color: #AED1D8;
-  font-size: 30px;
-  display: block;
-  text-transform: uppercase;
-  position: relative;
-  background: rgba(84, 201, 234, 0.3);
-  margin: 0;
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
-}
-.bb-custom-content h3:before,
-.bb-custom-content h3:after {
-  content: '';
-  position: absolute;
-  height: 10px;
-  border-top: 2px dotted rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  bottom: 0px;
-  left: 10px;
-  right: 10px;
-}
-.bb-custom-content h3:before {
-  bottom: auto;
-  top: 10px;
-}
-.bb-custom-content p,
-.bb-custom-content h4 span,
-.bb-bookblock .folder-cover span {
-  font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
-  font-style: italic;
-  font-size: 24px;
-  display: block;
-  color: #454545;
-  text-shadow: 0 1px 1px #fff;
-  margin: 0;
-}
-.bb-custom-content p {
-  padding: 22px;
-}
-.bb-custom-content h4 {
-  font-size: 28px;
-  line-height: 36px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0;
-}
-.bb-custom-content h4 span {
-  font-size: 50px;
-  color: #bdbaa7;
-  font-weight: 400;
-  line-height: 60px;
-}
 nav.bb-custom-nav {
   width: 85px;
   margin: 20px auto 0;
@@ -1331,17 +1305,22 @@ nav.bb-custom-nav a:first-child {
   float: left;
 }
 .bb-bookblock .folder {
-  width: 50%;
+  width: 49%;
   height: 100%;
+  display: inline-block;
   position: relative;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
   -o-perspective: 800px;
   -ms-perspective: 800px;
   perspective: 800px;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  -ms-perspective: 800px;
+  perspective: 800px;
 }
-.bb-bookblock .folder-cover,
-.bb-bookblock .folder-inner {
+.bb-bookblock .folder .folder-cover {
   position: absolute;
   width: 330px;
   top: 10px;
@@ -1349,7 +1328,7 @@ nav.bb-custom-nav a:first-child {
   bottom: 10px;
   z-index: 3;
 }
-.bb-bookblock .folder-cover {
+.bb-bookblock .folder .folder-cover {
   background: #f7f7f7;
   background: -moz-linear-gradient(left, #f7f7f7 0%, #ffffff 12%, #ededed 100%);
   background: -webkit-linear-gradient(left, #f7f7f7 0%, #ffffff 12%, #ededed 100%);
@@ -1358,50 +1337,35 @@ nav.bb-custom-nav a:first-child {
   background: linear-gradient(to right, #f7f7f7 0%, #ffffff 12%, #ededed 100%);
   box-shadow: inset -2px 0 5px rgba(255, 255, 255, 0.4), 1px 1px 3px rgba(0, 0, 0, 0.2), 2px 0 3px rgba(0, 0, 0, 0.2);
 }
-.bb-bookblock .folder-inner {
-  top: 20px;
-  height: 460px;
-  padding-top: 130px;
-  background: url("images/skins/hanna/building//paper_blue.jpg") center center;
-  box-shadow: inset 0 -2px 2px rgba(255, 255, 255, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.2), 1px 0 2px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-  -webkit-transition: -webkit-transform 300ms ease-in-out;
-  -moz-transition: -moz-transform 300ms ease-in-out;
-  -o-transition: -o-transform 300ms ease-in-out;
-  -ms-transition: -ms-transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out;
+.bb-bookblock .folder .folder-cover .treatment {
+  padding: 0 10px;
 }
-.bb-bookblock .folder-fold {
-  background: #ffffff;
-  background: -moz-linear-gradient(left, #ffffff 0%, #f2f2f2 4%, #ffffff 88%, #f7f7f7 100%);
-  background: -webkit-linear-gradient(left, #ffffff 0%, #f2f2f2 4%, #ffffff 88%, #f7f7f7 100%);
-  background: -o-linear-gradient(left, #ffffff 0%, #f2f2f2 4%, #ffffff 88%, #f7f7f7 100%);
-  background: -ms-linear-gradient(left, #ffffff 0%, #f2f2f2 4%, #ffffff 88%, #f7f7f7 100%);
-  background: linear-gradient(to right, #ffffff 0%, #f2f2f2 4%, #ffffff 88%, #f7f7f7 100%);
-  position: absolute;
-  right: 10px;
-  width: 60px;
-  top: 10px;
-  bottom: 10px;
-  z-index: 4;
-  -webkit-transform-origin: 100% 50%;
-  -moz-transform-origin: 100% 50%;
-  -o-transform-origin: 100% 50%;
-  -ms-transform-origin: 100% 50%;
-  transform-origin: 100% 50%;
+.bb-bookblock .folder .folder-cover .treatment h4 {
+  color: #5e5d5d;
+  font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0;
 }
-.bb-bookblock .folder-cover span {
-  cursor: pointer;
-  margin: 220px 0 0 50px;
-  display: block;
-  background: rgba(255, 255, 255, 0.4);
+.bb-bookblock .folder .folder-cover .treatment dl {
+  width: 100%;
   text-align: left;
-  font-size: 16px;
-  padding: 10px 0 10px 30px;
-  border-radius: 10px 0 0 10px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: none;
+}
+.bb-bookblock .folder .folder-cover .treatment dl dt {
+  width: 80%;
+  display: inline-block;
+}
+.bb-bookblock .folder .folder-cover .treatment dl dt span {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #454545;
+  text-shadow: 0 1px 1px #fff;
+}
+.bb-bookblock .folder .folder-cover .treatment dl dd {
+  float: right;
+  text-align: right;
+  display: inline-block;
+  margin: 0;
 }
 #folder-close {
   color: #333;

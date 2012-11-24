@@ -14,3 +14,39 @@
 
 /* Variables */
 /************************************************************************************/
+/* Mixins */
+
+	.perspective(@args) {
+		-webkit-perspective: @args;
+		-moz-perspective: @args;
+		-o-perspective: @args;
+		-ms-perspective: @args;
+		perspective: @args;
+	}
+
+	.preserve3D() {
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-o-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+
+	.backfaceVisibility(@args) {
+		-webkit-backface-visibility: @args;
+		-moz-backface-visibility: @args;
+		-o-backface-visibility: @args;
+		-ms-backface-visibility: @args;
+		backface-visibility: @args
+	}
+
+	.transform-origin(@rgs) {
+		-webkit-transform-origin: @rgs;
+		-moz-transform-origin: l@rgs;
+		-o-transform-origin: @rgs;
+		-ms-transform-origin: l@rgs;
+		transform-origin: @rgs;
+	}
+
+/* Mixins */
+/************************************************************************************/

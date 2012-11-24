@@ -6,28 +6,73 @@
 	<div class="bb-custom-wrapper">
 		<div id="bb-bookblock" class="bb-bookblock">
 			<div class="bb-item">
-				<div class="bb-custom-content bb-custom-bg">
-					<h3>Invitation</h3>
-					<p>We are inviting you to the great party of</p>
-					<h4>Andrew<br>McDonald <span>&amp;</span> Monica<br>Santa Cruz</h4>
-					<p>to celebrate their 50th wedding anniversary.</p>
-				</div>
-			</div>
-			<div class="bb-item">
 				<div class="bb-custom-content">
-					<div class="bb-custom-circle"></div>
 					<div id="folder" class="folder">
-						<div class="folder-cover"><span>Click me to open &rarr;</span></div>
-						<div class="folder-inner">
-							<a id="folder-close" href="#">&larr; close</a>
-							<h4>Location</h4>
-							<p>Friday, September 21st, 2012
-								<br>at 5:00 p.m.
-								<br>The Botanical Garden
-								<br>5461 Mystic Lane
-								<br>San Diego, California</p>
+						<div class="folder-cover">
+							<div class="treatment">
+								<h4>Semi-Permanent Eyelash Extensions</h4>
+								<dl>
+									<dt>Natural set <span>(1h 15min)</span></dt>
+									<dd>£49</dd>
+									<dt>Glamorous set <span>(1h 45min)</span></dt>
+								    <dd>£65</dd>
+								    <dt>Dramatic 3D set <span>(2h 30min)</span></dt>
+								    <dd>£95</dd>
+								    <dt>Lash touch up <span>(1h)</span></dt>
+								    <dd>£35</dd>
+								</dl>
+							</div>
+							<div class="treatment">
+								<h4>Eye Treatments </h4>
+								<dl>
+									<dt>Eyelash tint</dt>
+									<dd>£12</dd>
+									<dt>Eyebrow tint</dt>
+								    <dd>£8</dd>
+								    <dt>Eyebrow wax</dt>
+								    <dd>£8</dd>
+								    <dt>Definition Eyebrows</dt>
+								    <dd>£16</dd>
+								</dl>
+							</div>
 						</div>
-						<div class="folder-fold"></div>
+					</div>
+					<div id="folder" class="folder">
+						<div class="folder-cover">
+							<div class="treatment">
+								<h4>Hot Waxing Treatments</h4>
+								<dl>
+									<dt>Natural set <span>(1h 15min)</span></dt>
+									<dd>£49</dd>
+									<dt>Glamorous set <span>(1h 45min)</span></dt>
+								    <dd>£65</dd>
+								    <dt>Dramatic 3D set <span>(2h 30min)</span></dt>
+								    <dd>£95</dd>
+								    <dt>Lash touch up <span>(1h)</span></dt>
+								    <dd>£35</dd>
+								</dl>
+							</div>
+							<div class="treatment">
+								<h4>Strip waxing treatments</h4>
+								<dl>
+									<dt>Natural set <span>(1h 15min)</span></dt>
+									<dd>£49</dd>
+									<dt>Glamorous set <span>(1h 45min)</span></dt>
+								    <dd>£65</dd>
+								    <dt>Dramatic 3D set <span>(2h 30min)</span></dt>
+								    <dd>£95</dd>
+								    <dt>Lash touch up <span>(1h)</span></dt>
+								    <dd>£35</dd>
+								</dl>
+							</div>
+							<div class="treatment">
+								<h4>Full body wax</h4>
+								<dl>
+									<dt>Full body wax</dt>
+									<dd>£85</dd>
+								</dl>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
