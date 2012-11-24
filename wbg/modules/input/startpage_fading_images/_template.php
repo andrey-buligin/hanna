@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 global $_CFG;
 include_once(dirname(__FILE__).'/../../../modules/libraries/portfoliomanager.class/portfoliomanager.php');
@@ -24,7 +24,7 @@ if ( $portfolioCategories )
 	{
 		$categories[$category['id']] = $category['title'];
 	}
-	
+
 	$description = ' Show images from one randomly selected portfolio category';
 	$data = $this->checkbox("show_one_category", null).$description;
 	$this->make_container($data,"Use random category", "style=''");
@@ -50,9 +50,9 @@ if ( $portfolioCategories )
 	{
 		$array_with_bookmarks["bookmark".$catId] = $category['title'];
 	}
-	
+
 	$this->bookmarks_header($array_with_bookmarks, false);
-	
+
 	foreach ($portfolioCategories as $catId => $category)
 	{
 		$count++;
@@ -60,15 +60,15 @@ if ( $portfolioCategories )
 		$this->textline( $category['title']." rotation images");
 		//$this->start_repeat_block("List of images", "Images");
 		//    echo "Image:" . $this->onefile("image_small_".$catId, null, "startpage/");
-		//$this->end_repeat_block(); 
+		//$this->end_repeat_block();
 		//$this->image("image_small","Image small:","portfolio/");
 		@$this->image_block("images_".$catId, $category['title']." images", "startpage/" , 3);
 		$this->bookmarks_ends();
 	}
 }
-else 
+else
 {
-	$this->tr('', "Ooops! Looks like portfolio folder is empty or doesn't have any sections enabled ");	
+	$this->tr('', "Ooops! Looks like portfolio folder is empty or doesn't have any sections enabled ");
 }
 /* 558 372 */
 

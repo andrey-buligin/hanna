@@ -1259,7 +1259,7 @@ form textarea.error {
   height: 500px;
 }
 .bb-custom-content {
-  text-align: center;
+  text-align: left;
   background: #f4f2e5 url("images/skins/hanna/building//paper.jpg") bottom center;
   width: 100%;
   height: 100%;
@@ -1333,6 +1333,7 @@ nav.bb-custom-nav a:first-child {
   font-size: 1.2em;
   font-weight: normal;
   margin: 0;
+  text-align: center;
 }
 .bb-bookblock .folder .folder-cover .treatment dl {
   width: 100%;
@@ -1365,6 +1366,7 @@ nav.bb-custom-nav a:first-child {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 .bb-custom-last {
+  text-align: center;
   font-size: 1.5em;
   height: 100%;
   padding-top: 110px;
