@@ -13,5 +13,6 @@
     	<footer id="footerContainer">
     		<?php $this->displayFooter(); ?>
     	</footer>
+        <?php $this->includeTemplate('parts/footer_script'); ?>
     </body>
 </html>
