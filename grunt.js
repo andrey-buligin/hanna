@@ -22,10 +22,6 @@ module.exports = function(grunt) {
               ],
         dest: 'js/galleries/horizontal_slider/slider.min.js'
       },
-      css: {
-        src: ['<banner:meta.banner>', 'css/main.css', 'css/normalize.css', 'css/skins/hanna/main.css'],
-        dest: 'css/<%= pkg.name %>.css'
-      },
       main: {
         src: ['js/jquery-1.8.2.min.js', '<config:min.main.dest>'],
         dest: 'js/<%= pkg.name %>.min.js'
@@ -45,6 +41,12 @@ module.exports = function(grunt) {
               'js/plugins/innerFade.js',
               'js/skins/hanna/*.js'],
         dest: 'js/<%= pkg.name %>_custom.min.js'
+      }
+    },
+    cssmin: {
+      css: {
+        src: ['<banner:meta.banner>', 'css/main.css', 'css/normalize.css', 'css/skins/hanna/main.css'],
+        dest: 'css/<%= pkg.name %>.css'
       }
     },
     jshint: {
@@ -68,10 +70,12 @@ module.exports = function(grunt) {
     uglify: {}
   });
 
+  grunt.loadNpmTasks('grunt-css');
+
   // Default task.
   // Minify Main slider files, then cocat with already minified plugins
   // Concat css
   // Concat main files then  minify them and concat it with minified plugins
-  grunt.registerTask('default', 'min:slider concat:slider concat:css min:main concat:main');
+  grunt.registerTask('default', 'min:slider concat:slider cssmin:css min:main concat:main');
 
 };
