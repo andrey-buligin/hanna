@@ -1621,6 +1621,19 @@ form textarea.error {
 #commentForm {
   padding: 0;
   width: 60%;
+  height: 0;
+  overflow: hidden;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -webkit-transition: height 0.35s;
+  -moz-transition: height 0.35s;
+  -o-transition: height 0.35s;
+  transition: height 0.35s;
 }
 #customForm div,
 #commentForm div {
@@ -1667,6 +1680,10 @@ form textarea.error {
   -webkit-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px rgba(255, 255, 255, 0.65), inset 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+#customForm.visible,
+#commentForm.visible {
+  height: 425px;
 }
 /* Contact me */
 /************************************************************************************/

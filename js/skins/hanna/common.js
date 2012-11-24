@@ -14,19 +14,16 @@
         }
 
         // blog comments/reviews page form
-        Modernizr.csstransitions == false;
         if ( !Modernizr.csstransitions ) {
-            console.log('no trans')
             $('#commentForm').hide().addClass('visible');
 
             showForm = function() {
-                $('#commentForm').show();
+                $('#commentForm').show('normal');
             };
             hideForm = function() {
-                $('#commentForm').hide();
+                $('#commentForm').hide('normal');
             };
         } else {
-            console.log('has trans')
             showForm = function() {
                 $('#commentForm').addClass('visible');
             };
