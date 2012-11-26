@@ -4,23 +4,23 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2012, Codrops
  * http://www.codrops.com
  */
 
-;( function( $, window, undefined ) {
-	
+( function( $, window, undefined ) {
+
 	'use strict';
 
 	// global
 	var Modernizr = window.Modernizr;
 
 	$.BookBlock = function( options, element ) {
-		
+
 		this.$el = $( element );
 		this._init( options );
-		
+
 	};
 
 	// the options
@@ -47,7 +47,7 @@
 		prevEl : '',
 		// autoplay. If true it overwrites the circular option to true!
 		autoplay : false,
-		// time (ms) between page switch, if autoplay is true. 
+		// time (ms) between page switch, if autoplay is true.
 		interval : 3000,
 		// callback after the flip transition.
 		// page is the current item's index.
@@ -61,7 +61,7 @@
 	$.BookBlock.prototype = {
 
 		_init : function( options ) {
-			
+
 			// options.
 			this.options = $.extend( true, {}, $.BookBlock.defaults, options );
 			// set the perspective
@@ -92,10 +92,10 @@
 			this._initEvents();
 
 			if( this.options.autoplay ) {
-			
+
 				this.options.circular = true;
 				this._startSlideshow();
-			
+
 			}
 
 		},
@@ -187,7 +187,7 @@
 				if( !this.options.circular && this.current === this.itemsCount - 1 ) {
 
 					this.end = true;
-				
+
 				}
 				else {
 
@@ -201,7 +201,7 @@
 				if( !this.options.circular && this.current === 0 ) {
 
 					this.end = true;
-				
+
 				}
 				else {
 
@@ -221,9 +221,9 @@
 				this.$nextItem = this.$items.eq( this.current );
 
 			}
-			
+
 			if( !this.support ) {
-				
+
 				this._layoutNoSupport( dir );
 
 			}
@@ -290,7 +290,7 @@
 					self.isAnimating = false;
 
 					var isLimit = dir === 'next' && self.current === self.itemsCount - 1 || dir === 'prev' && self.current === 0;
-					
+
 					// callback trigger
 					self.options.onEndFlip( self.current, isLimit );
 
@@ -327,7 +327,7 @@
 
 				if( self.end ) {
 
-					// first && last pages lift up 15 deg when we can't go further. 
+					// first && last pages lift up 15 deg when we can't go further.
 					style = ( dir === 'next' ) ? 'rotateY(-15deg)' : 'rotateY(-165deg)';
 
 				}
@@ -338,19 +338,19 @@
 
 				// overlays
 				if( self.options.shadows && !self.end ) {
-					
+
 					$o_middle_f.css( {
 						opacity	: ( dir === 'next' ) ? self.options.shadowFlip : 0
 					} );
-					
+
 					$o_middle_b.css( {
 						opacity	: ( dir === 'next' ) ? 0 : self.options.shadowFlip
 					} );
-					
+
 					$o_left.css( {
 						opacity	: ( dir === 'next' ) ? self.options.shadowSides : 0
 					} );
-						
+
 					$o_right.css( {
 						opacity	: ( dir === 'next' ) ? 0 : self.options.shadowSides
 					} );
@@ -361,7 +361,7 @@
 			}, 30 );
 
 		},
-		// adds the necessary sides (bb-page) to the layout 
+		// adds the necessary sides (bb-page) to the layout
 		_addSide : function( side, dir ) {
 
 			var $side;
@@ -385,7 +385,7 @@
 					*/
 					$side = $( '<div class="bb-page"><div class="bb-back"><div class="bb-outer"><div class="bb-content" style="width:' + this.elWidth + 'px"><div class="bb-inner">' + ( dir==='next' ? this.$current.html() : this.$nextItem.html() ) + '</div></div><div class="bb-overlay"></div></div></div></div>' ).css( 'z-index', 102 );
 					break;
-				
+
 				case 'middle' :
 					/*
 					<div class="bb-page" style="z-index:3;">
@@ -413,7 +413,7 @@
 					*/
 					$side = $( '<div class="bb-page"><div class="bb-front"><div class="bb-outer"><div class="bb-content" style="left:' + ( - this.elWidth / 2 ) + 'px;width:' + this.elWidth + 'px"><div class="bb-inner">' + ( dir==='next' ? this.$current.html() : this.$nextItem.html() ) + '</div></div><div class="bb-flipoverlay"></div></div></div><div class="bb-back"><div class="bb-outer"><div class="bb-content" style="width:' + this.elWidth + 'px"><div class="bb-inner">' + ( dir==='next' ? this.$nextItem.html() : this.$current.html() ) + '</div></div><div class="bb-flipoverlay"></div></div></div></div>' ).css( 'z-index', 103 );
 					break;
-				
+
 				case 'right' :
 					/*
 					<div class="bb-page" style="z-index:1;">
@@ -438,96 +438,96 @@
 
 		},
 		_startSlideshow		: function() {
-		
+
 			var self = this;
-			
+
 			this.slideshow = setTimeout( function() {
-				
+
 				self._navigate( 'next' );
-				
+
 				if( self.options.autoplay ) {
-				
+
 					self._startSlideshow();
-				
+
 				}
-			
+
 			}, this.options.interval );
-		
+
 		},
 		_stopSlideshow		: function() {
 
 			if( this.options.autoplay ) {
-			
+
 				clearTimeout( this.slideshow );
 				this.options.autoplay = false;
-			
+
 			}
 
 		}
 
 	};
-	
+
 	var logError = function( message ) {
 
 		if ( window.console ) {
 
 			window.console.error( message );
-		
+
 		}
 
 	};
-	
+
 	$.fn.bookblock = function( options ) {
 
 		var instance = $.data( this, 'bookblock' );
-		
+
 		if ( typeof options === 'string' ) {
-			
+
 			var args = Array.prototype.slice.call( arguments, 1 );
-			
+
 			this.each(function() {
-			
+
 				if ( !instance ) {
 
 					logError( "cannot call methods on bookblock prior to initialization; " +
 					"attempted to call method '" + options + "'" );
 					return;
-				
+
 				}
-				
+
 				if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
 
 					logError( "no such method '" + options + "' for bookblock instance" );
 					return;
-				
+
 				}
-				
+
 				instance[ options ].apply( instance, args );
-			
+
 			});
-		
-		} 
+
+		}
 		else {
-		
+
 			this.each(function() {
-				
+
 				if ( instance ) {
 
 					instance._init();
-				
+
 				}
 				else {
 
 					instance = $.data( this, 'bookblock', new $.BookBlock( options, this ) );
-				
+
 				}
 
 			});
-		
+
 		}
-		
+
 		return instance;
-		
+
 	};
-	
+
 } )( jQuery, window );
