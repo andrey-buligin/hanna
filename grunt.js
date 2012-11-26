@@ -35,6 +35,12 @@ module.exports = function(grunt) {
               'js/galleries/horizontal_slider/slider.js'],
         dest: 'js/galleries/horizontal_slider/slider_custom.min.js'
       },
+      book: {
+        src: ['<banner:meta.banner>',
+              'js/plugins/jquerypp.custom.js',
+              'js/plugins/jquery.bookblock.js'],
+        dest: 'js/plugins/jquery.bookblock.min.js'
+      },
       main: {
         src: ['<banner:meta.banner>',
               'js/plugins/jquery.easing.1.3.js',
@@ -76,6 +82,6 @@ module.exports = function(grunt) {
   // Minify Main slider files, then cocat with already minified plugins
   // Concat css
   // Concat main files then  minify them and concat it with minified plugins
-  grunt.registerTask('default', 'min:slider concat:slider cssmin:css min:main concat:main');
+  grunt.registerTask('default', 'min:slider min:book concat:slider cssmin:css min:main concat:main');
 
 };

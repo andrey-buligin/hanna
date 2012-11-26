@@ -1,8 +1,10 @@
 <?php global $_CFG; if ($_CFG['Environment'] == 'live') :?>
 	<script type="text/javascript" src="js/hanna.min.js"></script>
 	<?php $this->loadGalleryRequiredJsFilesMin();?>
+	<?php $this->loadRequiredJsFilesMin();?>
 <?php else: ?>
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<?php $this->loadRequiredJsFiles();?>
 	<?php $this->loadGalleryRequiredJsFiles();?>
 	<script type="text/javascript" src="js/plugins/jquery.easing.1.3.js"></script>
 	<script type="text/javascript" src="<?php echo $this->getSkinJsUrl('common.js')?>"></script>
