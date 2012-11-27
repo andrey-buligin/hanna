@@ -8,9 +8,7 @@
  * Copyright 2012, Codrops
  * http://www.codrops.com
  */
-( function( $, window, selectedPage ) {
-
-    selectedPage = selectedPage || '';
+( function( $, window, undefined ) {
 
     // global
     var Modernizr = window.Modernizr;
@@ -176,7 +174,7 @@
             this.isAnimating = true;
             this.$current = this.$items.eq( this.current );
 
-            if( page !== selectedPage ) {
+            if( page !== undefined ) {
 
                 this.current = page;
 
