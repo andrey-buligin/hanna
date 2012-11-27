@@ -51,60 +51,11 @@
 		</div>
 	</div>
 </section>
-	<script type="text/javascript" src="js/plugins/jquerypp.custom.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.bookblock.js"></script>
-	<script type="text/javascript">
-		$(function() {
+<?php
+	global $_CFG;
 
-			var BookPage = (function() {
+	$devFiles = array('plugins/jquerypp.custom.js', 'plugins/jquery.bookblock.js');
+	$minFiles = 'plugins/jquery.bookblock.min.js';
 
-				var config = {
-					$bookBlock : $( '#bb-bookblock' ),
-					$navNext   : $( '#bb-nav-next' ),
-					$navPrev   : $( '#bb-nav-prev' ),
-
-					// init bookBlock!
-					bb: $('#bb-bookblock').bookblock({
-						speed 		: 700,
-						easing		: 'ease-out',
-						perspective	: 1500,
-						shadowSides	: 0.8,
-						shadowFlip	: 0.7
-					})
-				},
-
-				init = function() {
-
-					config.$navNext.on( 'click', function() {
-						config.bb.next();
-						return false;
-					});
-
-					config.$navPrev.on( 'click', function() {
-						config.bb.prev();
-						return false;
-					});
-
-					// swipe event : http://jquerypp.com/#swipe
-					config.$bookBlock.children().on( {
-						'swipeleft' : function( event ) {
-							config.bb.next();
-							return false;
-
-						},
-						'swiperight' : function( event ) {
-							config.bb.prev();
-							return false;
-						}
-					});
-
-				}
-
-				return { init : init };
-
-			})();
-
-			BookPage.init();
-
-		});
-	</script>
+	$_CFG['currentLayout']->requireJsFiles($devFiles, $minFiles);
+?>

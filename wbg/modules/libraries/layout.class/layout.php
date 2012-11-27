@@ -9,6 +9,8 @@ class WbgLayout
     public  $skin         = '';
     public  $currentPage  = '';
     public  $skinBlocks   = '';
+    public  $requiredJsFilesList = array();
+    public  $requiredJsMinifiedFilesList = array();
 
     private function __construct()
     {
@@ -61,6 +63,47 @@ class WbgLayout
     {
         if ( $file )
             echo '<script type="text/javascript" src="'.($path ? $path.'/'.$file : $this->getSkinJsUrl( $file )).'"></script>';
+    }
+
+    public function requireJsFiles($files = null, $minFiles = null)
+    {
+        $this->_addJsFilesToArray($files, $this->requiredJsFilesList);
+        $this->_addJsFilesToArray($minFiles, $this->requiredJsMinifiedFilesList);
+    }
+
+    private function _addJsFilesToArray($files, &$requiredJsFilesList)
+    {
+        if ( is_array($files) ) {
+            $requiredJsFilesList = array_merge($requiredJsFilesList, $files);
+        } elseif ( is_string($files) ) {
+            $requiredJsFilesList[] = $files;
+        }
+    }
+
+    public function loadRequiredJsFiles()
+    {
+        $this->_loadRequiredJs($this->requiredJsFilesList);
+    }
+
+    public function loadRequiredJsFilesMin()
+    {
+        if ( !$this->_loadRequiredJs($this->requiredJsMinifiedFilesList) ) {
+            $this->loadGalleryRequiredFiles();
+        }
+    }
+
+    private function _loadRequiredJs($files)
+    {
+        if ( $files )
+        {
+            foreach ( $files as $file )
+            {
+                $this->loadHeaderJsFile( $file, 'js/' );
+            }
+            return true;
+        }
+
+        return false;
     }
 
     public function loadGalleryRequiredCssFiles()
