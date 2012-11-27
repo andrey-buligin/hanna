@@ -289,13 +289,13 @@ $.event.setupHelper( [
                     // trigger swipe events on this guy
                     $.each($.event.find(delegate, events, selector), function(){
                         this.call(entered, ev, {start : start, end: stop})
-                    })
+                    });
 
                 }
             }
             // reset start and stop
             start = stop = undefined;
-        })
+        });
 });
 
-})(jQuery)
+})(jQuery);

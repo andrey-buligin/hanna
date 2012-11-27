@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         dest: 'js/galleries/horizontal_slider/slider_custom.min.js'
       },
       book: {
-        src: ['<banner:meta.banner>',
+        src: [
               'js/plugins/jquerypp.custom.js',
               'js/plugins/jquery.bookblock.js'],
         dest: 'js/plugins/jquery.bookblock.min.js'
