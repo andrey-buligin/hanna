@@ -44,7 +44,7 @@ module.exports = function(grunt) {
       main: {
         src: ['<banner:meta.banner>',
               'js/plugins/jquery.easing.1.3.js',
-              'js/plugins/innerFade.js',
+              'js/plugins/validation.js',
               'js/skins/hanna/*.js'],
         dest: 'js/<%= pkg.name %>_custom.min.js'
       }

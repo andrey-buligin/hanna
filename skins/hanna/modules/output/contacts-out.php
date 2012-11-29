@@ -80,25 +80,10 @@
 	</div>
 </form>
 </article>
-<script type="text/javascript" src="js/plugins/validation.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#customForm').formValidation({
-			name: {
-				type: 'text',
-				selector: '#name',
-				helperSelector: '#nameInfo'
-			},
-			email: {
-				type: 'email',
-				selector: '#email',
-				helperSelector: '#emailInfo'
-			},
-			comment: {
-				type: 'textarea',
-				selector: '#message',
-				helperSelector: '#message'
-			}
-		});
-	});
-</script>
+<?php
+
+	/*$devFiles = array('plugins/validation.js', 'skins/hanna/contacts.js');
+	$minFiles = 'skins/hanna/contacts.min.js';
+
+	$_CFG['currentLayout']->requireJsFiles($devFiles, $minFiles);*/
+?>

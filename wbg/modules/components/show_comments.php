@@ -132,28 +132,8 @@ class comments {
 
 	public function showFrontEndValidation()
 	{
-		return '<script type="text/javascript" src="js/plugins/validation.js"></script>
-				<script type="text/javascript">
-					$(document).ready(function(){
-						$("#commentForm").formValidation({
-							name: {
-								type: "text",
-								selector: "#nameField",
-								helperSelector: "#nameInfo"
-							},
-							email: {
-								type: "email",
-								selector: "#emailField",
-								helperSelector: "#emailInfo"
-							},
-							comment: {
-								type: "textarea",
-								selector: "#commentField",
-								helperSelector: ""
-							}
-						});
-					});
-				</script>';
+		return '';
+		// use layout->requiredJS
 	}
 
 	/**
