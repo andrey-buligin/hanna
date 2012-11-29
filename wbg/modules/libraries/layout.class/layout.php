@@ -88,7 +88,7 @@ class WbgLayout
     public function loadRequiredJsFilesMin()
     {
         if ( !$this->_loadRequiredJs($this->requiredJsMinifiedFilesList) ) {
-            $this->loadGalleryRequiredFiles();
+            $this->loadRequiredJsFiles();
         }
     }
 
