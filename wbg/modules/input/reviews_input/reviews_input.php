@@ -105,6 +105,8 @@ function main(){
 	} else {
 
 		return $textlist->show_form($_GET['edit'], $ERROR);
+		echo mysql_error();
+		echo print_r($ERROR);
 
 	}
 }

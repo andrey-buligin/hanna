@@ -96,7 +96,7 @@ class reviews extends comments
 				 		self::show_form().
 				 	'</div>'.
 					self::showFrontEndValidation().
-				 	self::show_comments( null, null, '').
+				 	self::show_comments( null, null, '', true).
 				'</div>';
 	}
 }

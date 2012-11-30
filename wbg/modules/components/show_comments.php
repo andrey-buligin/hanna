@@ -168,34 +168,64 @@ class comments {
 	}
 
 	/**
-	 * Feedbkack showing
+	 * Feedbkack/Comments records list
 	 *
-	 * @return unknown
+	 * @return string
 	 */
-	function show_comments($id = '', $table = '', $title = 'Comments') {
+	function show_comments($id = '', $table = '', $title = 'Comments', $showWeeks = false) {
 
 		self::_check_need_data();
 
-		$HTML = '';
-		$x 	  = 0;
+		$HTML      = '';
+		$x         = 0;
+		$day	   = 86400;
+		$week	   = 604800;
+
+		$today     = 'Today';
+		$thisWeek  = 'This week';
+		$weeksAgo  = 'Few weeks ago';
+		$monthAgo  = 'A month ago';
+		$fewMontsAgo  = 'Few months ago';
+		$yearAgo   = 'More than year ago';
+		$now       = time();
 
 		if ( $id && $table ) {
 			$conditions = "AND doc_id = '".self::$doc_id."' AND sql_table_name='".$table."'";
+			$orderBy    = "ASC";
 		} else {
 			$conditions = "";
+			$orderBy    = "DESC";
 		}
 
-		$SQL_str = "SELECT * FROM ".self::$sql_table_name." WHERE active=1 ".$conditions." order by datums ASC";
+		$SQL_str = "SELECT * FROM ".self::$sql_table_name." WHERE active=1 ".$conditions." order by datums ".$orderBy;
 		$sql_res = mysql_query($SQL_str);
 		while ($arr = @mysql_fetch_assoc($sql_res)){
 
 			$img   = '';
 			$class = ($x++ %2 == 0 ? 'white' : 'grey');
 
+			$date = date('d.m.Y.  H:i', $arr['datums']);
+
+			if ($showWeeks) {
+				if ( $now - $arr['datums'] < $day ) {
+					$date = $today;
+				} elseif ($now - $arr['datums'] < $week) {
+					$date = $thisWeek;
+				} elseif ($now - $arr['datums'] < $week * 4) {
+					$date = $weeksAgo;
+				} elseif ($now - $arr['datums'] < $week * 8) {
+					$date = $monthAgo;
+				} elseif ($now - $arr['datums'] < $week * 48) {
+					$date = $fewMontsAgo;
+				} else {
+					$date = $yearAgo;
+				}
+			}
+
 			$HTML .= '
 				<article class="item '.$class.'">
 					<header><h5 class="author">'.$arr['name'].'</h5></header>
-					<time datetime="'.date('Y-m-d', $arr['datums']).'" class="date">'.date('d.m.Y.  H:i', $arr['datums']).'</time>
+					<time datetime="'.date('Y-m-d', $arr['datums']).'" class="date">'.$date.'</time>
 					<p class="commentText">'.$arr['text'].'</p>
 				</article>';
 		}
