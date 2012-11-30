@@ -17,8 +17,6 @@
     });
 </script>
 
-<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5095a7cf6d2d8dc2&amp;async=1"></script>
-
 <?php global $_CFG; if ($_CFG['Environment'] == 'live') :?>
 	<script type="text/javascript">
       var _gaq = _gaq || [];
@@ -32,7 +30,10 @@
       })();
 
       var addthis_config = {
-         data_ga_property: 'UA-36089727-1'
+         data_ga_property: 'UA-36089727-1',
+         data_ga_social : true
       };
     </script>
 <?php endif; ?>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5095a7cf6d2d8dc2&amp;async=1"></script>
