@@ -12,6 +12,7 @@
 	<title><?php WBG::variable("page_title",1);?></title>
 	<meta name="description" content="<?php echo WBG_HELPER::generatePageMetaTag('desciption');?>" />
 	<meta name="keywords" content="<?php echo WBG_HELPER::generatePageMetaTag('keywords');?>" />
+	<meta property="og:image" content="http://beautybyhanna.co.uk/images/skins/hanna/building/beautybyhanna.jpg">
 
 	<link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css' />
 
