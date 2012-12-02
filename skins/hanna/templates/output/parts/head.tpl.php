@@ -14,7 +14,7 @@
 	<meta name="keywords" content="<?php echo WBG_HELPER::generatePageMetaTag('keywords');?>" />
 	<meta property="og:image" content="http://beautybyhanna.co.uk/images/skins/hanna/building/beautybyhanna.jpg">
 
-	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link rel="shortcut icon" href="<?php echo $this->getImageUrl('building/favicon.ico');?>" />
 	<link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css' />
 
 	<?php global $_CFG; if ($_CFG['Environment'] == 'live') :?>
