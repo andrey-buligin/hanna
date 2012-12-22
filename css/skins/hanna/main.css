@@ -1013,7 +1013,7 @@ form textarea.error {
 /* AddThis */
 .addthis_toolbox {
   float: right;
-  min-width: 242px;
+  min-width: 244px;
   opacity: 0;
   filter: alpha(opacity=0);
   -webkit-transition: all 0.4s;
