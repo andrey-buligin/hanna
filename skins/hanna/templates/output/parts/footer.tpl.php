@@ -3,5 +3,5 @@
     <?php WBG::message("contacts");?>
 	<span class="followUs">
 	Follow us on: <a class="fb-icon" href="https://www.facebook.com/pages/Beauty-by-Hanna-at-OMG/146676095477869" rel="publisher" target="_blank">Facebook</a>
-	<a class="googlePlus-icon" href="https://plus.google.com/100711375028921564293" rel="publisher" target="_blank">Google+</a>
+	<a class="googlePlus-icon" href="https://plus.google.com/102346584537869526317" rel="publisher" target="_blank">Google+</a>
 </span></address>
