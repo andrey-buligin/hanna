@@ -36,7 +36,7 @@
 			?>
 			<li class="ch-item">
 				<div class="ch-info"><a href="<?php echo $link;?>">&nbsp;</a></div>
-				<div class="ch-info-front" style="background-image: url('images/<?php echo $frontImageSrc;?>')"></div>
+				<div class="ch-info-front" style="background-image: url('images/<?php echo $frontImageSrc;?>')"><a href="<?php echo $link;?>"></a></div>
 				<div class="ch-info-back">
 					<a href="<?php echo $link;?>">
 						<h3><?php echo $title; ?></h3>
