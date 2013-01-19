@@ -8,7 +8,7 @@
 			return true;
 	}
 	function validateEmail($email){
-		return ereg("^[a-zA-Z0-9]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$", $email);
+		return ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email);
 	}
 	function validatePasswords($pass1, $pass2) {
 		//if DOESN'T MATCH
