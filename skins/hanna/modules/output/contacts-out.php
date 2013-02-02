@@ -1,9 +1,10 @@
 <article class="clearfix">
 <header><h1><?php echo WBG_HELPER::insertCatTitle() ?></h1></header>
 <aside id="googleMap">
-	<!-- <iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?ie=UTF8&amp;cid=9929042873503584236&amp;q=Beauty+by+Hanna+at+OMG+Hair+and+Beauty&amp;gl=GB&amp;hl=en&amp;ll=51.532059,-0.041296&amp;spn=0.006295,0.006295&amp;t=m&amp;iwloc=A&amp;output=embed"></iframe><br/>
-	<div><a target="_blank" href="https://maps.google.co.uk/maps?q=Beauty+by+Hanna+at+OMG+Hair+and+Beauty&hl=en&ll=51.53363,-0.04107&spn=0.006327,0.01929&cid=9929042873503584236&gl=GB&t=m&z=16&iwloc=A">View in a larger map</a></div>
-	 --><div class="vcard">
+	<iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?hl=en&amp;sig=ycO&amp;ie=UTF8&amp;q=beauty++by+hanna&amp;fb=1&amp;gl=uk&amp;cid=0,0,18193410473570611342&amp;t=m&amp;ll=51.524125,-0.161533&amp;spn=0.009345,0.01502&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+	<div><a target="_blank" href="http://maps.google.co.uk/maps?hl=en&amp;sig=ycO&amp;ie=UTF8&amp;q=beauty++by+hanna&amp;fb=1&amp;gl=uk&amp;cid=0,0,18193410473570611342&amp;t=m&amp;ll=51.524125,-0.161533&amp;spn=0.009345,0.01502&amp;z=15&amp;iwloc=A&amp;source=embed">View in a larger map</a></div>
+	<div class="entrance">Entrance to the salon is on<br/> the right hand side of the "Salt cafe"</div>
+	<div class="vcard">
 		<div class="org">Beauty by Hanna</div>
 		<div class="adr">
 			<div class="street-address">60 Rossmore rd.</div>
@@ -13,7 +14,6 @@
 		</div>
 		<div class="fn">Hanna </span>
 		<span class="tel">07542124477</span>
-		<div class="entrance"><br/>Entrance to the salon is on<br/> the right hand side of the "Salt cafe"<br/></div>
 	</div>
 </aside>
 <?php
