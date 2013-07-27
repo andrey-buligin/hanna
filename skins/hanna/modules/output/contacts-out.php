@@ -2,39 +2,19 @@
 <header><h1><?php echo WBG_HELPER::insertCatTitle() ?></h1></header>
 <aside id="googleMap">
 	<iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/maps?hl=en&amp;sig=ycO&amp;ie=UTF8&amp;q=beauty++by+hanna&amp;fb=1&amp;gl=uk&amp;cid=0,0,18193410473570611342&amp;t=m&amp;ll=51.524125,-0.161533&amp;spn=0.009345,0.01502&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-	<div><a target="_blank" href="http://maps.google.co.uk/maps?hl=en&amp;sig=ycO&amp;ie=UTF8&amp;q=beauty++by+hanna&amp;fb=1&amp;gl=uk&amp;cid=0,0,18193410473570611342&amp;t=m&amp;ll=51.524125,-0.161533&amp;spn=0.009345,0.01502&amp;z=15&amp;iwloc=A&amp;source=embed">View in a larger map</a></div>
-	<div class="entrance">Entrance to the salon is on<br/> the right hand side of the "Salt cafe"</div>
-	<div class="vcard">
-		<div class="org">Beauty by Hanna</div>
-		<div class="adr">
-			<div class="street-address">60 Rossmore rd.</div>
-			<span class="postal-code">NW1 6RB</span>
-			<span class="locality">London</span>
-			<div class="country-name">United Kingdom</div>
-		</div>
-		<div class="fn">Hanna </span>
-		<span class="tel">07542124477</span>
-	</div>
+	<div style="padding-bottom: 10px"><a target="_blank" href="http://maps.google.co.uk/maps?hl=en&amp;sig=ycO&amp;ie=UTF8&amp;q=beauty++by+hanna&amp;fb=1&amp;gl=uk&amp;cid=0,0,18193410473570611342&amp;t=m&amp;ll=51.524125,-0.161533&amp;spn=0.009345,0.01502&amp;z=15&amp;iwloc=A&amp;source=embed">View in a larger map</a></div>
+	<?php
+
+		global $_CFG;
+		global $web;
+
+		include_once( $_CFG['path_to_modules'].'components/validation.php');
+
+		$data = @unserialize( file_get_contents( $_CFG['path_to_modules'].'input/onetext/__saved_data_'.$web->active_category) );
+		echo $data['text'];
+	?>
 </aside>
-<?php
 
-	global $_CFG;
-	global $web;
-
-	include_once( $_CFG['path_to_modules'].'components/validation.php');
-
-	$data = @unserialize( file_get_contents( $_CFG['path_to_modules'].'input/onetext/__saved_data_'.$web->active_category) );
-	if ($data['text'])
-	{
-		$imageMap = WBG_HELPER::insertImage($data['text_img'], ' class="f-left" ');
-		echo WBG_HELPER::transferToXHTML('
-			<div class="page-text clear-block">
-				'.($data['title'] ? '<h2>'.$data['title'].'</h2>': '').'
-				'.($data['text_img'] ? WBG_HELPER::insertImage($data['text_img'], 'class="f-left"', null, 1) : '').
-				$data['text'].'
-			</div>');
-	}
-?>
 
 <?if( isset($_POST['send']) && (!validateName($_POST['name']) || !validateEmail($_POST['email']) || !validateMessage($_POST['message']) ) ):?>
 		<div id="error">
